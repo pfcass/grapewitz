@@ -2,13 +2,15 @@
 
 <p>
   <strong>Brand:</strong>
-  <%= @wine.brand %>
+  <%= @wine.brand.name %>
 </p>
 
 <p>
   <strong>Variety:</strong>
-  <%= @wine.variety %>
+  <%= @wine.variety.name %>
 </p>
+
+<%# iterate through @wine.bottles %>
 
 <%= link_to 'Edit', edit_wine_path(@wine) %> |
 <%= link_to 'Back', wines_path %>
