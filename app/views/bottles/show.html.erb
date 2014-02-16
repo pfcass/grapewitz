@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @bottle.quantity %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @bottle.price %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @bottle.rating %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @bottle.comment %>
+</p>
+
+<p>
+  <strong>Wine:</strong>
+  <%= @bottle.wine %>
+</p>
+
+<p>
+  <strong>Store:</strong>
+  <%= @bottle.store %>
+</p>
+
+<%= link_to 'Edit', edit_bottle_path(@bottle) %> |
+<%= link_to 'Back', bottles_path %>

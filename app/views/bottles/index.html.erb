@@ -1,0 +1,37 @@
+<h1>Listing bottles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Rating</th>
+      <th>Comment</th>
+      <th>Wine</th>
+      <th>Store</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bottles.each do |bottle| %>
+      <tr>
+        <td><%= bottle.quantity %></td>
+        <td><%= bottle.price %></td>
+        <td><%= bottle.rating %></td>
+        <td><%= bottle.comment %></td>
+        <td><%= bottle.wine %></td>
+        <td><%= bottle.store %></td>
+        <td><%= link_to 'Show', bottle %></td>
+        <td><%= link_to 'Edit', edit_bottle_path(bottle) %></td>
+        <td><%= link_to 'Destroy', bottle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bottle', new_bottle_path %>
