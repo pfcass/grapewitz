@@ -5,7 +5,7 @@ class WinesController < ApplicationController
   # GET /wines
   # GET /wines.json
   def index
-    @wines = Wine.all
+    @wines = Wine.order(:variety_id,:brand_id)
   end
 
   # GET /wines/1

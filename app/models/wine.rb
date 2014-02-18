@@ -1,6 +1,4 @@
 class Wine < ActiveRecord::Base
-  #validates :brand_id, uniqueness: { :scope => :variety_id }
-  #validates :variety_id, uniqueness: { :scope => :brand_id }
 
   belongs_to :brand
   belongs_to :variety
