@@ -7,7 +7,8 @@
       <th>Price</th>
       <th>Rating</th>
       <th>Comment</th>
-      <th>Wine</th>
+      <th>Brand</th>
+      <th>Variety</th>
       <th>Store</th>
       <th></th>
       <th></th>
@@ -22,8 +23,9 @@
         <td><%= bottle.price %></td>
         <td><%= bottle.rating %></td>
         <td><%= bottle.comment %></td>
-        <td><%= bottle.wine %></td>
-        <td><%= bottle.store %></td>
+        <td><%= bottle.wine.brand.name %></td>
+        <td><%= bottle.wine.variety.name %></td>
+        <td><%= bottle.store.name %></td>
         <td><%= link_to 'Show', bottle %></td>
         <td><%= link_to 'Edit', edit_bottle_path(bottle) %></td>
         <td><%= link_to 'Destroy', bottle, method: :delete, data: { confirm: 'Are you sure?' } %></td>

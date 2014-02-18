@@ -29,11 +29,11 @@
   </div>
   <div class="field">
     <%= f.label :wine_id %><br>
-    <%= f.text_field :wine_id %>
+    <%= collection_select( :bottle, :wine_id, Wine.all, :id, :wine_name, :prompt => true ) %>
   </div>
   <div class="field">
     <%= f.label :store_id %><br>
-    <%= f.text_field :store_id %>
+    <%= collection_select( :bottle, :store_id, Store.all, :id, :name, :prompt => true ) %>
   </div>
   <div class="actions">
     <%= f.submit %>

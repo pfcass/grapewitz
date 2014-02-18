@@ -22,12 +22,12 @@
 
 <p>
   <strong>Wine:</strong>
-  <%= @bottle.wine %>
+  <%= @bottle.wine.brand.name + " " + @bottle.wine.variety.name%>
 </p>
 
 <p>
   <strong>Store:</strong>
-  <%= @bottle.store %>
+  <%= @bottle.store.name %>
 </p>
 
 <%= link_to 'Edit', edit_bottle_path(@bottle) %> |

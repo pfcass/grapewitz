@@ -11,6 +11,25 @@
 </p>
 
 <%# iterate through @wine.bottles %>
+<table>
+  <% @wine.bottles.each do |bottle| %>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+       <td class="list_description">
+          <dl>
+            <dt><%= bottle.store %></dt>
+            <dd><%= truncate(strip_tags(bottle.comment), length: 80) %></dd>
+          </dl>
+        </td>
+        <td class="list_actions">
+          <%= link_to 'Show', bottle %><br/>
+          <%= link_to 'Edit', edit_bottle_path(bottle) %><br/>
+          <%= link_to 'Destroy', bottle, method: :delete,
+                      data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+  <% end %>
+</table> <br />
+
 
 <%= link_to 'Edit', edit_wine_path(@wine) %> |
 <%= link_to 'Back', wines_path %>
