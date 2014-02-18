@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140218155428) do
+ActiveRecord::Schema.define(version: 20140218175538) do
 
   create_table "bottles", force: true do |t|
     t.integer  "quantity"
@@ -87,7 +87,5 @@ ActiveRecord::Schema.define(version: 20140218155428) do
   end
 
   add_index "wines", ["brand_id", "variety_id"], name: "by_brand_and_variety", unique: true
-  add_index "wines", ["brand_id"], name: "index_wines_on_brand_id"
-  add_index "wines", ["variety_id"], name: "index_wines_on_variety_id"
 
 end
