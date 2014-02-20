@@ -1,13 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Wine:</strong>
-  <%= @wine.brand.name %>
-  <%= @wine.variety.name %>
-</p>
-<p>
-  <strong>Total purchased:</strong>
-  <%= @num_bottles %>
+  Wine:
+  <strong>
+    <%= @wine.brand.name %>
+    <%= @wine.variety.name %>
+  </strong>
 </p>
 
 <%# iterate through @wine.bottles %>
@@ -41,6 +39,10 @@
       </tr>
   <% end %>
 </table> <br />
+<p>
+  Total purchased: 
+  <strong><%= @num_bottles %>:</strong>
+</p>
 
 
 <%= link_to 'Edit', edit_wine_path(@wine) %> |
