@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e8e8daf-1535-4ab5-9512-ff76115f0ea8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="grapewitz.iws" />
@@ -840,7 +839,11 @@
       <created>1392864486317</created>
       <updated>1392864486317</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add 'extra' directory, and exclude it from git">
+      <created>1392865372504</created>
+      <updated>1392865372504</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -910,7 +913,8 @@
     <MESSAGE value="Error recovery for duplicate wine creation&#10;Class method for determining name of wine&#10;" />
     <MESSAGE value="Remove dead code.&#10;Order wines by variety" />
     <MESSAGE value="Add button to wines to add a bottle&#10;Add date, but don't implement it yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add button to wines to add a bottle&#10;Add date, but don't implement it yet" />
+    <MESSAGE value="add 'extra' directory, and exclude it from git" />
+    <option name="LAST_COMMIT_MESSAGE" value="add 'extra' directory, and exclude it from git" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
