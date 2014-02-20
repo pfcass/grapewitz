@@ -4,9 +4,10 @@ class Bottle < ActiveRecord::Base
 
   #validates :store_id, presence: true
 
-  before_save :set_defaults
+  after_initialize :init
 
-  def set_defaults
-    self.quantity = 1
+  def init
+    self.quantity ||= 1
+    self.purchased ||= Time.now
   end
 end
