@@ -2,6 +2,8 @@ class WinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotUnique, with: :duplicate_wine
 
+  before_filter :authenticate_user!
+
   # GET /wines
   # GET /wines.json
   def index
