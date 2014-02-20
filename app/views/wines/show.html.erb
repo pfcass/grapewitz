@@ -19,8 +19,8 @@
             <dd>Got <%= bottle.quantity %>
               from <%= bottle.store.name %>
               for <%= number_to_currency( bottle.price ) %>
-              <% if bottle.purchased != NIL %>
-                on: <%= bottle.purchased %>
+              <% if bottle.purchased_on != NIL %>
+                on: <%= bottle.purchased_on %>
               <% end %>
              and rated it: <%= bottle.rating %>
            </dd>

@@ -8,6 +8,6 @@ class Bottle < ActiveRecord::Base
 
   def init
     self.quantity ||= 1
-    self.purchased ||= Time.now
+    self.purchased_on ||= Time.now
   end
 end

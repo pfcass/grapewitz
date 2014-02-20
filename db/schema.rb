@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140219162718) do
+ActiveRecord::Schema.define(version: 20140220143321) do
 
   create_table "bottles", force: true do |t|
     t.integer  "quantity"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20140219162718) do
     t.integer  "store_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "purchased"
+    t.date     "purchased_on"
   end
 
   add_index "bottles", ["store_id"], name: "index_bottles_on_store_id"
