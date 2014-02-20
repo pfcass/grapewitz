@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :wine_id %><br>
+    <%= collection_select( :bottle, :wine_id, Wine.all, :id, :wine_name, :prompt => true ) %>
+  </div>
+  <div class="field">
     <%= f.label :quantity %><br>
     <%= f.number_field :quantity %>
   </div>
@@ -26,10 +30,6 @@
   <div class="field">
     <%= f.label :comment %><br>
     <%= f.text_field :comment %>
-  </div>
-  <div class="field">
-    <%= f.label :wine_id %><br>
-    <%= collection_select( :bottle, :wine_id, Wine.all, :id, :wine_name, :prompt => true ) %>
   </div>
   <div class="field">
     <%= f.label :store_id %><br>

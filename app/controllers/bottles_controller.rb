@@ -15,6 +15,10 @@ class BottlesController < ApplicationController
   # GET /bottles/new
   def new
     @bottle = Bottle.new
+    if params[:wine_id] != NIL
+      @wine_id = params[:wine_id]
+      @bottle.wine_id = @wine_id
+    end
   end
 
   # GET /bottles/1/edit

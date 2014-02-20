@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4e8e8daf-1535-4ab5-9512-ff76115f0ea8" name="Default" comment="Error recovery for duplicate wine creation&#10;Class method for determining name of wine&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/wine.rb" afterPath="$PROJECT_DIR$/app/models/wine.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/wines_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/wines_controller.rb" />
+    <list default="true" id="4e8e8daf-1535-4ab5-9512-ff76115f0ea8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="grapewitz.iws" />
@@ -16,6 +14,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/grapewitz@IRB_console__grapewitz.coverage" NAME="IRB console: grapewitz Coverage Results" MODIFIED="1392831363435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="grapewitz" />
     <SUITE FILE_PATH="coverage/grapewitz@Development__grapewitz.coverage" NAME="Development: grapewitz Coverage Results" MODIFIED="1392646640205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="grapewitz" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -30,10 +29,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="wine.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/wine.rb">
+      <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/bottles/new.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="32" selection-end="32" vertical-scroll-proportion="0.03768844" vertical-offset="0" max-vertical-offset="398">
+            <state line="5" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="-3.125" vertical-offset="0" max-vertical-offset="165">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/wines/show.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="18" selection-start="180" selection-end="180" vertical-scroll-proportion="9.75" vertical-offset="369" max-vertical-offset="795">
               <folding />
             </state>
           </provider>
@@ -42,25 +50,72 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/wines/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="9" selection-start="174" selection-end="174" vertical-scroll-proportion="-6.875" vertical-offset="30" max-vertical-offset="525">
+            <state line="21" column="0" selection-start="507" selection-end="507" vertical-scroll-proportion="-5.25" vertical-offset="189" max-vertical-offset="540">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wines_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/wines_controller.rb">
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/bottles/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="281" selection-end="281" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1335">
+            <state line="24" column="4" selection-start="315" selection-end="315" vertical-scroll-proportion="-9.375" vertical-offset="135" max-vertical-offset="600">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="schema.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <file leaf-file-name="bottles_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/bottles_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="4" selection-start="2992" selection-end="2992" vertical-scroll-proportion="0.0" vertical-offset="1057" max-vertical-offset="1455">
+            <state line="34" column="0" selection-start="618" selection-end="618" vertical-scroll-proportion="0.0" vertical-offset="385" max-vertical-offset="1260">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="comment.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="0" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="brand.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/brand.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="56" selection-start="64" selection-end="89" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bottle.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/bottle.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="3" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_form.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/bottles/_form.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="7" selection-start="502" selection-end="502" vertical-scroll-proportion="0.50427353" vertical-offset="63" max-vertical-offset="660">
+              <folding>
+                <element signature="tag#div#5" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="capture_helper.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/helpers/capture_helper.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="200" column="0" selection-start="7457" selection-end="7457" vertical-scroll-proportion="0.0" vertical-offset="2880" max-vertical-offset="3330">
               <folding />
             </state>
           </provider>
@@ -79,7 +134,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/wines/index.html.erb" />
         <option value="$PROJECT_DIR$/db/migrate/20140216162342_create_comments.rb" />
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
@@ -87,11 +141,8 @@
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/comment.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/app/views/wines/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/bottles/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/bottles/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/wines/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/bottles/_form.html.erb" />
         <option value="$PROJECT_DIR$/db/migrate/20140218155428_add_indexes_to_wines.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20140218160534_add_indexes_to_names.rb" />
         <option value="$PROJECT_DIR$/app/models/brand.rb" />
@@ -100,8 +151,17 @@
         <option value="$PROJECT_DIR$/app/models/store.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20140218175538_remove_index_from_wines.rb" />
         <option value="$PROJECT_DIR$/app/models/variety.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/wines_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/wine.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20140219163126_add_default_value_to_quantity_attribute.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20140219163400_add_value_to_quantity.rb" />
+        <option value="$PROJECT_DIR$/app/views/wines/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/wines_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/wines/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/bottle.rb" />
+        <option value="$PROJECT_DIR$/app/views/bottles/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/bottles_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/bottles/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/bottles/_form.html.erb" />
       </list>
     </option>
   </component>
@@ -173,6 +233,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grapewitz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grapewitz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -409,7 +487,30 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
-  <component name="RunManager" selected="Rails.Development: grapewitz">
+  <component name="RunManager" selected="IRB console.IRB console: grapewitz">
+    <configuration default="false" name="IRB console: grapewitz" type="IrbRunConfigurationType" factoryName="IRB console" temporary="true">
+      <module name="grapewitz" />
+      <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <IRB_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <IRB_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$USER_HOME$/.rvm/rubies/ruby-2.1.0/bin/irb" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="--prompt simple" />
+      <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="false" />
+      <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
     <configuration default="true" type="RakeRunConfigurationType" factoryName="Rake">
       <module name="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -541,6 +642,27 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method />
     </configuration>
+    <configuration default="true" type="IrbRunConfigurationType" factoryName="IRB console">
+      <module name="" />
+      <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="" />
+      <IRB_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <IRB_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="false" />
+      <method />
+    </configuration>
     <configuration default="false" name="test: grapewitz" type="RakeRunConfigurationType" factoryName="Rake">
       <module name="grapewitz" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -647,12 +769,18 @@
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Rake.test: grapewitz" />
       <item index="1" class="java.lang.String" itemvalue="Rake.spec: grapewitz" />
       <item index="2" class="java.lang.String" itemvalue="Rails.Production: grapewitz" />
       <item index="3" class="java.lang.String" itemvalue="Rails.Development: grapewitz" />
+      <item index="4" class="java.lang.String" itemvalue="IRB console.IRB console: grapewitz" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="IRB console.IRB console: grapewitz" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
@@ -702,7 +830,15 @@
       <created>1392749263579</created>
       <updated>1392749263579</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Remove dead code.&#10;Order wines by variety">
+      <created>1392750193591</created>
+      <updated>1392750193591</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add button to wines to add a bottle&#10;Add date, but don't implement it yet">
+      <created>1392864486317</created>
+      <updated>1392864486317</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -715,7 +851,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3101777" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3101777" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38081396" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -733,11 +869,11 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32994187" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994187" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38081396" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38081396" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -770,28 +906,33 @@
     <MESSAGE value="&#10;" />
     <MESSAGE value="dual indexes for wines&#10;" />
     <MESSAGE value="Error recovery for duplicate wine creation&#10;Class method for determining name of wine&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Error recovery for duplicate wine creation&#10;Class method for determining name of wine&#10;" />
+    <MESSAGE value="Remove dead code.&#10;Order wines by variety" />
+    <MESSAGE value="Add button to wines to add a bottle&#10;Add date, but don't implement it yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add button to wines to add a bottle&#10;Add date, but don't implement it yet" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/app/controllers/wines_controller.rb</url>
-          <line>43</line>
+          <line>47</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/views/bottles/_form.html.erb</url>
+          <line>8</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/views/bottles/_form.html.erb</url>
+          <line>6</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="23" />
+      <option name="time" value="49" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20140216162342_create_comments.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="410">
@@ -820,13 +961,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="410">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="34" selection-start="1163" selection-end="1163" vertical-scroll-proportion="0.0" vertical-offset="280" max-vertical-offset="810">
@@ -834,30 +968,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="0" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="1110">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/wines/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="13" selection-start="512" selection-end="512" vertical-scroll-proportion="-6.875" vertical-offset="150" max-vertical-offset="615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/bottle.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="19" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
           <folding />
         </state>
       </provider>
@@ -890,23 +1003,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/bottles/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="32" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/wines/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="10" selection-start="323" selection-end="323" vertical-scroll-proportion="-1.7083334" vertical-offset="109" max-vertical-offset="495">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/bottles/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="21" selection-start="909" selection-end="909" vertical-scroll-proportion="-8.208333" vertical-offset="298" max-vertical-offset="705">
           <folding />
         </state>
       </provider>
@@ -981,13 +1080,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/store.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/varieties_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="11" selection-start="175" selection-end="175" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1215">
@@ -998,20 +1090,6 @@
     <entry file="file://$PROJECT_DIR$/db/migrate/20140218175538_remove_index_from_wines.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/variety.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="1" selection-start="35" selection-end="92" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/brand.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="56" selection-start="64" selection-end="89" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
           <folding />
         </state>
       </provider>
@@ -1051,31 +1129,131 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20140219162718_add_date_to_bottles.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="4" selection-start="2992" selection-end="2992" vertical-scroll-proportion="0.0" vertical-offset="1057" max-vertical-offset="1455">
+        <state line="1" column="12" selection-start="61" selection-end="61" vertical-scroll-proportion="0.036585364" vertical-offset="0" max-vertical-offset="410">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/wines/index.html.erb">
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="9" selection-start="174" selection-end="174" vertical-scroll-proportion="-6.875" vertical-offset="30" max-vertical-offset="525">
+        <state line="31" column="21" selection-start="1288" selection-end="1288" vertical-scroll-proportion="0.0" vertical-offset="220" max-vertical-offset="1470">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/wines_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="281" selection-end="281" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1335">
+        <state line="14" column="28" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1395">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/wine.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="32" selection-end="32" vertical-scroll-proportion="0.03768844" vertical-offset="0" max-vertical-offset="398">
+        <state line="1" column="0" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/variety.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="1" selection-start="35" selection-end="92" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="410">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/store.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/brand.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="56" selection-start="64" selection-end="89" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/helpers/capture_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="200" column="0" selection-start="7457" selection-end="7457" vertical-scroll-proportion="0.0" vertical-offset="2880" max-vertical-offset="3330">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/bottle.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="3" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/bottles/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="4" selection-start="315" selection-end="315" vertical-scroll-proportion="-9.375" vertical-offset="135" max-vertical-offset="600">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/wines/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="18" selection-start="180" selection-end="180" vertical-scroll-proportion="9.75" vertical-offset="369" max-vertical-offset="795">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/bottles_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="0" selection-start="618" selection-end="618" vertical-scroll-proportion="0.0" vertical-offset="385" max-vertical-offset="1260">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/bottles/new.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="-3.125" vertical-offset="0" max-vertical-offset="165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/wines/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="507" selection-end="507" vertical-scroll-proportion="-5.25" vertical-offset="189" max-vertical-offset="540">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/bottles/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="7" selection-start="502" selection-end="502" vertical-scroll-proportion="0.50427353" vertical-offset="63" max-vertical-offset="660">
+          <folding>
+            <element signature="tag#div#5" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

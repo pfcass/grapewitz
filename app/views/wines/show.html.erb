@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Brand:</strong>
+  <strong>Wine:</strong>
   <%= @wine.brand.name %>
-</p>
-
-<p>
-  <strong>Variety:</strong>
   <%= @wine.variety.name %>
+</p>
+<p>
+  <strong>Total purchased:</strong>
+  <%= @num_bottles %>
 </p>
 
 <%# iterate through @wine.bottles %>
@@ -15,11 +15,23 @@
   <% @wine.bottles.each do |bottle| %>
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
        <td class="list_description">
-          <dl>
-            <dt><%= bottle.store %></dt>
-            <dd><%= truncate(strip_tags(bottle.comment), length: 80) %></dd>
-          </dl>
-        </td>
+         <dl>
+            <dd>Got <%= bottle.quantity %>
+              from <%= bottle.store.name %>
+              for <%= number_to_currency( bottle.price ) %>
+              <% if bottle.purchased != NIL %>
+                on: <%= bottle.purchased %>
+              <% end %>
+             and rated it: <%= bottle.rating %>
+           </dd>
+         </dl>
+         <dl>
+           <dd>Comment: <%= strip_tags(bottle.comment) %></dd>
+         </dl>
+
+       </td>
+
+
         <td class="list_actions">
           <%= link_to 'Show', bottle %><br/>
           <%= link_to 'Edit', edit_bottle_path(bottle) %><br/>
