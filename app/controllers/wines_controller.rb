@@ -1,6 +1,5 @@
 class WinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
-  rescue_from ActiveRecord::RecordNotUnique, with: :duplicate_wine
 
   before_filter :authenticate_user!
 
@@ -77,13 +76,5 @@ class WinesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def wine_params
       params.require(:wine).permit(:brand_id, :variety_id)
-    end
-
-    def duplicate_wine
-      bid = params[:wine][:brand_id]
-      vid = params[:wine][:variety_id]
-
-      logger.error "This wine already exists"
-      redirect_to wines_url, notice: 'Sorry:' + Wine.find_name(bid, vid) + 'Already exists'
     end
 end
