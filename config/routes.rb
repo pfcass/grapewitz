@@ -1,6 +1,6 @@
 Grapewitz::Application.routes.draw do
   devise_for :users
-  get "cellar/index"
+  #get "cellar/index"
   resources :bottles
 
   resources :wines
