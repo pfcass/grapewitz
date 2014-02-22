@@ -34,6 +34,10 @@ class WinesController < ApplicationController
 
     respond_to do |format|
       if @wine.save
+        comment = @wine.comments.create
+        comment.comment = params[:wine][:note]
+        comment.save
+
         format.html { redirect_to @wine, notice: 'Wine was successfully created.' }
         format.json { render action: 'show', status: :created, location: @wine }
       else
@@ -48,6 +52,10 @@ class WinesController < ApplicationController
   def update
     respond_to do |format|
       if @wine.update(wine_params)
+        comment = @wine.comments.create
+        comment.comment = params[:wine][:note]
+        comment.save
+
         format.html { redirect_to @wine, notice: 'Wine was successfully updated.' }
         format.json { head :no_content }
       else
