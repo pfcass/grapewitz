@@ -14,19 +14,11 @@
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
        <td class="list_description">
          <dl>
-            <dd>Got <%= bottle.quantity %>
-              from <%= bottle.store.name %>
-              for <%= number_to_currency( bottle.price ) %>
-              <% if bottle.purchased_on != NIL %>
-                on: <%= bottle.purchased_on %>
-              <% end %>
-             and rated it: <%= bottle.rating %>
-           </dd>
+            <dd><%= bottle.to_label %></dd>
          </dl>
          <dl>
            <dd>Comment: <%= strip_tags(bottle.comment) %></dd>
          </dl>
-
        </td>
 
 

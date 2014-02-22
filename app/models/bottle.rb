@@ -1,4 +1,6 @@
 class Bottle < ActiveRecord::Base
+  include ActionView::Helpers
+
   belongs_to :wine
   belongs_to :store
 
@@ -13,5 +15,13 @@ class Bottle < ActiveRecord::Base
     self.quantity ||= 1
     self.purchased_on ||= Time.now
     self.rating ||= 3
+  end
+
+  def to_label
+    str = "Got #{pluralize( self.quantity, 'bottle')} from #{self.store.name} "
+    if self.price != NIL
+      str += "@ #{number_to_currency( self.price )} "
+    end
+    str += " purchased on #{self.purchased_on} with rating of #{self.rating}."
   end
 end
