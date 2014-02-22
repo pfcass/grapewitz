@@ -14,4 +14,11 @@ class Wine < ActiveRecord::Base
     [ brand.name, variety.name ].reject(&:blank?).join(':')
   end
 
+  def num_bottles
+    num = 0
+    bottles.each do |b|
+      num += b.quantity
+    end
+    num
+  end
 end

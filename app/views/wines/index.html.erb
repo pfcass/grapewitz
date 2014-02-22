@@ -16,10 +16,9 @@
       <tr>
         <td><%= wine.brand.name %></td>
         <td><%= wine.variety.name %></td>
-        <td><%= link_to 'Show', wine %></td>
-        <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
-        <td><%= link_to 'Destroy', wine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Show your bottles (#{wine.num_bottles})", wine %></td>
         <td><%= link_to 'Add a Bottle', new_bottle_path(:wine_id => wine.id) %></td>
+        <td><%= link_to 'Add a comment', edit_wine_path(wine) %></td>
       </tr>
     <% end %>
   </tbody>
