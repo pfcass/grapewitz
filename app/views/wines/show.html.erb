@@ -23,7 +23,7 @@
             <dd><%= bottle.to_label %></dd>
          </dl>
          <dl>
-           <dd>Comment: <%= strip_tags(bottle.comment) %></dd>
+           <dd><%= bottle.user.email %> says: <%= strip_tags(bottle.comment) %></dd>
          </dl>
        </td>
 

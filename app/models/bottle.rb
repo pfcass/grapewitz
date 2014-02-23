@@ -3,6 +3,7 @@ class Bottle < ActiveRecord::Base
 
   belongs_to :wine
   belongs_to :store
+  belongs_to :user
 
   validates :wine_id, :store_id, presence: true
   validates :rating, numericality: { only_integer: true,
@@ -15,6 +16,7 @@ class Bottle < ActiveRecord::Base
     self.quantity ||= 1
     self.purchased_on ||= Time.now
     self.rating ||= 3
+    #self.user_id = current_user.id
   end
 
   def to_label

@@ -29,7 +29,7 @@ class BottlesController < ApplicationController
   # POST /bottles.json
   def create
     @bottle = Bottle.new(bottle_params)
-
+    @bottle.user_id = current_user.id
     respond_to do |format|
       if @bottle.save
         format.html { redirect_to @bottle, notice: 'Bottle was successfully created.' }
