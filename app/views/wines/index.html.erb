@@ -1,21 +1,16 @@
 <h1>Listing wines</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Brand</th>
-      <th>Variety</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
   <tbody>
+    <%= variety = '' %>
     <% @wines.each do |wine| %>
+      <% if variety != wine.variety.name %>
+          <%    variety = wine.variety.name %>
+          <th><%= variety %><br></th>
+      <%  end %>
       <tr>
         <td><%= wine.brand.name %></td>
-        <td><%= wine.variety.name %></td>
         <td><%= link_to "Show your bottles (#{wine.num_bottles})", wine %></td>
         <td><%= link_to 'Add a Bottle', new_bottle_path(:wine_id => wine.id) %></td>
         <td><%= link_to 'Add a comment', edit_wine_path(wine) %></td>

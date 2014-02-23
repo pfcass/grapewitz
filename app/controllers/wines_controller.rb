@@ -36,6 +36,7 @@ class WinesController < ApplicationController
       if @wine.save
         comment = @wine.comments.create
         comment.comment = params[:wine][:note]
+        comment.user_id = current_user.id
         comment.save
 
         format.html { redirect_to @wine, notice: 'Wine was successfully created.' }
@@ -54,6 +55,7 @@ class WinesController < ApplicationController
       if @wine.update(wine_params)
         comment = @wine.comments.create
         comment.comment = params[:wine][:note]
+        comment.user_id = current_user.id
         comment.save
 
         format.html { redirect_to @wine, notice: 'Wine was successfully updated.' }

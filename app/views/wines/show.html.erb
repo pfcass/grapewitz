@@ -6,6 +6,12 @@
     <%= @wine.brand.name %>
     <%= @wine.variety.name %>
   </strong>
+  <% comments = @wine.comments %>
+  <% if comments != NIL %>
+  <%	 comments.each do |c| %>
+      <p> <%= c.user.email %> says: <%= c.comment %> </p>
+        <% end %>
+  <% end %>
 </p>
 
 <%# iterate through @wine.bottles %>
