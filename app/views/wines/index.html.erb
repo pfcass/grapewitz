@@ -1,7 +1,6 @@
 <h1>Listing wines</h1>
 
 <table>
-
   <tbody>
     <%= variety = '' %>
     <% @wines.each do |wine| %>
@@ -11,9 +10,19 @@
       <%  end %>
       <tr>
         <td><%= wine.brand.name %></td>
-        <td><%= link_to "Show your bottles (#{wine.num_bottles})", wine %></td>
+
+        <td><%= link_to "Show Test", wine_path(wine.id, :show_all => false ) %></td>
+
+        <td><%= link_to "Show My Bottles (#{wine.num_bottles(false, current_user.id)})",
+                        wine_path(wine.id, :show_all => false )%></td>
+        <td><%= link_to "Show All Bottles(#{wine.num_bottles(true, current_user.id)})",
+                        wine_path(wine.id, :show_all => true )%></td>
         <td><%= link_to 'Add a Bottle', new_bottle_path(:wine_id => wine.id) %></td>
         <td><%= link_to 'Add a comment', edit_wine_path(wine) %></td>
+
+        <% if wine.comments.first %>
+            <td><%= wine.comments.first.comment %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

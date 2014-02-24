@@ -9,32 +9,44 @@
   <% comments = @wine.comments %>
   <% if comments != NIL %>
   <%	 comments.each do |c| %>
-      <p> <%= c.user.email %> says: <%= c.comment %> </p>
-        <% end %>
+       <p>
+         <% if c.user_id != current_user.id %>
+              <%= c.user.email %> says:
+         <% end %>
+         <%= c.comment %>
+       </p>
+      <% end %>
   <% end %>
 </p>
 
 <%# iterate through @wine.bottles %>
 <table>
   <% @wine.bottles.each do |bottle| %>
-      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-       <td class="list_description">
-         <dl>
-            <dd><%= bottle.to_label %></dd>
-         </dl>
-         <dl>
-           <dd><%= bottle.user.email %> says: <%= strip_tags(bottle.comment) %></dd>
-         </dl>
-       </td>
+      <% if params[:show_all] == 'true' || bottle.user_id.to_s == params[:id] %>
+         <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+           <td class="list_description">
+             <dl>
+                <dd><%= bottle.to_label %></dd>
+             </dl>
+             <dl>
+               <dd>
+               <% if bottle.user_id != current_user.id %>
+                    <%= bottle.user.email %> says:
+               <% end %>
+               <%= strip_tags(bottle.comment) %>
+               </dd>
+             </dl>
+           </td>
 
 
-        <td class="list_actions">
-          <%= link_to 'Show', bottle %><br/>
-          <%= link_to 'Edit', edit_bottle_path(bottle) %><br/>
-          <%= link_to 'Destroy', bottle, method: :delete,
-                      data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
+            <td class="list_actions">
+              <%= link_to 'Show', bottle %><br/>
+              <%= link_to 'Edit', edit_bottle_path(bottle) %><br/>
+              <%= link_to 'Destroy', bottle, method: :delete,
+                          data: { confirm: 'Are you sure?' } %>
+            </td>
+         </tr>
+        <% end %>
   <% end %>
 </table> <br />
 
