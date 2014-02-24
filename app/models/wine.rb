@@ -1,5 +1,5 @@
 class Wine < ActiveRecord::Base
-  validates :brand_id, uniqueness: { scope: :variety_id, message: "of this variety already exists" }
+  validates :brand_id, uniqueness: { scope: :variety_id, message: 'of this variety already exists' }
 
   belongs_to :brand
   belongs_to :variety
@@ -14,11 +14,17 @@ class Wine < ActiveRecord::Base
     [ brand.name, variety.name ].reject(&:blank?).join(':')
   end
 
-  def num_bottles
+  def num_bottles( show_all, current_user_id )
     num = 0
+    $LOG.info( "num_bottles( show_all=#{show_all})")
     bottles.each do |b|
-      num += b.quantity
+      $LOG.info( b.inspect )
+      if show_all || b.user_id == current_user_id
+        num += b.quantity
+      end
     end
+    $LOG.info( "-----------")
     num
   end
+
 end

@@ -12,10 +12,6 @@ class WinesController < ApplicationController
   # GET /wines/1
   # GET /wines/1.json
   def show
-    @num_bottles = 0
-    @wine.bottles.each do |w|
-      @num_bottles += w.quantity
-    end
   end
 
   # GET /wines/new

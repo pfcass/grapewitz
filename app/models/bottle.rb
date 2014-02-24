@@ -12,11 +12,14 @@ class Bottle < ActiveRecord::Base
 
   after_initialize :init
 
+  def inspect
+    "#{self.wine.brand.name}.#{self.wine.variety.name}:  #{self.user.email}:  #{self.quantity}"
+  end
+
   def init
     self.quantity ||= 1
     self.purchased_on ||= Time.now
     self.rating ||= 3
-    #self.user_id = current_user.id
   end
 
   def to_label
