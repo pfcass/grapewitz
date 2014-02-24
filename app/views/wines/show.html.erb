@@ -22,7 +22,7 @@
 <%# iterate through @wine.bottles %>
 <table>
   <% @wine.bottles.each do |bottle| %>
-      <% if params[:show_all] == 'true' || bottle.user_id.to_s == params[:id] %>
+      <% if params[:show_all] == 'true' || current_user.id == bottle.user_id %>
          <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
            <td class="list_description">
              <dl>

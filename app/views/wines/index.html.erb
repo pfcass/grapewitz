@@ -11,8 +11,6 @@
       <tr>
         <td><%= wine.brand.name %></td>
 
-        <td><%= link_to "Show Test", wine_path(wine.id, :show_all => false ) %></td>
-
         <td><%= link_to "Show My Bottles (#{wine.num_bottles(false, current_user.id)})",
                         wine_path(wine.id, :show_all => false )%></td>
         <td><%= link_to "Show All Bottles(#{wine.num_bottles(true, current_user.id)})",
