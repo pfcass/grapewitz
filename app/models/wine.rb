@@ -16,14 +16,11 @@ class Wine < ActiveRecord::Base
 
   def num_bottles( show_all, current_user_id )
     num = 0
-    $LOG.info( "num_bottles( show_all=#{show_all})")
     bottles.each do |b|
-      $LOG.info( b.inspect )
       if show_all || b.user_id == current_user_id
         num += b.quantity
       end
     end
-    $LOG.info( "-----------")
     num
   end
 
