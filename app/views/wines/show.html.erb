@@ -29,12 +29,12 @@
                 <dd><%= bottle.to_label %></dd>
              </dl>
              <dl>
-               <dd>
                <% if bottle.user_id != current_user.id %>
+                   <dd>
                     <%= bottle.user.email %> says:
+                   </dd>
                <% end %>
                <%= strip_tags(bottle.comment) %>
-               </dd>
              </dl>
            </td>
 

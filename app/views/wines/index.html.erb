@@ -1,30 +1,60 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Listing wines</h1>
 
 <table>
-  <tbody>
-    <%= variety = '' %>
-    <% @wines.each do |wine| %>
+  <%= variety = '' %>
+  <% @wines.each do |wine| %>
       <% if variety != wine.variety.name %>
-          <%    variety = wine.variety.name %>
-          <th><%= variety %><br></th>
-      <%  end %>
-      <tr>
-        <td><%= wine.brand.name %></td>
+          <% variety = wine.variety.name %>
+          <th class="variety_name"><%= variety %></th>
+      <% end %>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td class="list_description">
+          <dl>
+            <dd><%= wine.brand.name %></dd>
+          </dl>
 
-        <td><%= link_to "Show My Bottles (#{wine.num_bottles(false, current_user.id)})",
-                        wine_path(wine.id, :show_all => false )%></td>
-        <td><%= link_to "Show All Bottles(#{wine.num_bottles(true, current_user.id)})",
-                        wine_path(wine.id, :show_all => true )%></td>
-        <td><%= link_to 'Add a Bottle', new_bottle_path(:wine_id => wine.id) %></td>
-        <td><%= link_to 'Add a comment', edit_wine_path(wine) %></td>
+          <dl>
+            <dd>
+              <%= link_to "Show My Bottles (#{wine.num_bottles(false, current_user.id)})",
+                          wine_path(wine.id, :show_all => false)%>
 
-        <% if wine.comments.first %>
-            <td><%= link_to(wine.comments.first.comment,
-                            edit_comment_path(:id => wine.comments.first.id)) %></td>
-        <% end %>
+              <%=  link_to "Show All Bottles(#{wine.num_bottles(true, current_user.id)})",
+                          wine_path(wine.id, :show_all => true) %>
+              </dd>
+            </dd>
+          </dl>
+
+          <% if wine.comments.first %>
+              <dl>
+                <dd><%= wine.comments.first.comment %></dd>
+              </dl>
+          <% end %>
+        </td>
+
+        <td class="list_actions">
+          <dl>
+            <dt>
+              <%= link_to 'Add a Bottle', new_bottle_path(:wine_id => wine.id) %>
+            </dt>
+          </dl>
+
+          <dl>
+            <dt>
+              <%= link_to 'Add a comment', edit_wine_path(wine) %>
+            </dt>
+          </dl>
+
+          <% if wine.comments.first %>
+              <dl>
+                <dt><%= link_to("Edit Lead Comment", edit_comment_path(:id => wine.comments.first.id)) %></dt>
+              </dl>
+          <% end %>
+
+        </td>
       </tr>
-    <% end %>
-  </tbody>
+  <% end %>
 </table>
 
 <br>
