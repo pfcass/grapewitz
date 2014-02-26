@@ -19,7 +19,8 @@
         <td><%= link_to 'Add a comment', edit_wine_path(wine) %></td>
 
         <% if wine.comments.first %>
-            <td><%= wine.comments.first.comment %></td>
+            <td><%= link_to(wine.comments.first.comment,
+                            edit_comment_path(:id => wine.comments.first.id)) %></td>
         <% end %>
       </tr>
     <% end %>
