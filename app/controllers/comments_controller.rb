@@ -1,6 +1,4 @@
 class CommentsController < ApplicationController
-  def show
-  end
 
   def edit
     @comment = Comment.find( params[:id].to_i )
