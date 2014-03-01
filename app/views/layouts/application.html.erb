@@ -11,6 +11,10 @@
 <% if current_user != NIL %>
    <p class="logout"><%= link_to "Logout",  destroy_user_session_path, method: :delete%></p>
 <% end %>
+
+<%	 if current_user  && current_user.admin? %>
+    <p><%= link_to "All users",  users_new_path, method: :get%></p>
+<%	 end %>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 

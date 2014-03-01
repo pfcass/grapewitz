@@ -1,4 +1,11 @@
 Grapewitz::Application.routes.draw do
+  get "users/index"
+  get "users/new"
+  post "users/create"
+  get "users/update"
+  get "users/edit"
+  get "users/destroy"
+  get "users/show"
   devise_for :users
   #get "cellar/index"
   resources :bottles
