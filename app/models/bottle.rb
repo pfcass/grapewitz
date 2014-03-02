@@ -19,7 +19,7 @@ class Bottle < ActiveRecord::Base
   def init
     self.quantity ||= 1
     self.purchased_on ||= Time.now
-    self.rating ||= 3
+    self.rating ||= 0
   end
 
   def to_label

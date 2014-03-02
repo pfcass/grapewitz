@@ -81,6 +81,7 @@ class WinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wine_params
+      # ?? pfcass: why don't I need :note here ??
       params.require(:wine).permit(:brand_id, :variety_id, :region_id)
     end
 end
