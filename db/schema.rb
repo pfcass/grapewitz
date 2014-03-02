@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140223145420) do
+ActiveRecord::Schema.define(version: 20140302160221) do
 
   create_table "bottles", force: true do |t|
     t.integer  "quantity"
@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(version: 20140223145420) do
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
+  create_table "regions", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "stores", force: true do |t|
     t.string   "name"
     t.string   "location"
@@ -81,13 +87,7 @@ ActiveRecord::Schema.define(version: 20140223145420) do
     t.datetime "updated_at"
   end
 
-  create_table "wines", force: true do |t|
-    t.integer  "brand_id"
-    t.integer  "variety_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "wines", ["brand_id", "variety_id"], name: "by_brand_and_variety", unique: true
+# Could not dump table "wines" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
 end

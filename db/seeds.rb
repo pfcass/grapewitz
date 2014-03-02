@@ -7,3 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create!(:email => "admin@example.com", :password => "password")
+
+Region.create!(:name => 'Unknown')

@@ -1,4 +1,6 @@
 Grapewitz::Application.routes.draw do
+  resources :regions
+
   get "users/index"
   get "users/new"
   post "users/create"
