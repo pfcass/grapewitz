@@ -1,5 +1,5 @@
 class AddRegionIdToWines < ActiveRecord::Migration
   def change
-    add_column :wines, :region_id, :reference
+    add_reference :wines, :region
   end
 end

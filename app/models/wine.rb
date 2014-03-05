@@ -1,7 +1,9 @@
 class Wine < ActiveRecord::Base
   validates :brand_id, uniqueness: { scope: :variety_id, message: 'of this variety already exists' }
   validates :region_id, :presence => true
-  #after_initialize :init
+  validates :color, :presence => true
+  validates :fizz, :presence => true
+  after_initialize :init
 
   belongs_to :brand
   belongs_to :variety
@@ -14,13 +16,26 @@ class Wine < ActiveRecord::Base
 
   attr_accessor :note
 
+  #constants
+  RED = 0
+  WHITE = 1
+  ROSE = 2
+
+  STILL = 0
+  FIZZY = 1
+
   def wine_name
     [ brand.name, variety.name ].reject(&:blank?).join(':')
   end
 
-  #def init
-  #  self.region_id = 0
-  #end
+  def name
+    wine_name
+  end
+
+  def init
+    self.color = RED
+    self.fizz = STILL
+  end
 
   def num_bottles( show_all, current_user_id )
     num = 0
