@@ -3,7 +3,6 @@ class Wine < ActiveRecord::Base
   validates :region_id, :presence => true
   validates :color, :presence => true
   validates :fizz, :presence => true
-  after_initialize :init
 
   belongs_to :brand
   belongs_to :variety
@@ -25,16 +24,11 @@ class Wine < ActiveRecord::Base
   FIZZY = 1
 
   def wine_name
-    [ brand.name, variety.name ].reject(&:blank?).join(':')
+    [ brand.name, variety.name ].reject(&:blank?).join(' ')
   end
 
   def name
     wine_name
-  end
-
-  def init
-    self.color = RED
-    self.fizz = STILL
   end
 
   def num_bottles( show_all, current_user_id )

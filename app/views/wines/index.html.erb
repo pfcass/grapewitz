@@ -1,5 +1,10 @@
 <h1>OUR WINES</h1>
 
+<div>
+  MY LINKS:
+<%=	 link_to 'MY CELLAR', users_show_path(current_user.id) %>
+</div>
+
 <table>
   <%= variety = '' %>
   <% @wines.each do |wine| %>

@@ -10,5 +10,6 @@
   <%= @store.location %>
 </p>
 
-<%= link_to 'Edit', edit_store_path(@store) %> |
-<%= link_to 'Back', stores_path %>
+<%= link_to 'Edit', edit_store_path(@store) %>
+<%= link_to 'Continue adding a bottle', new_bottle_path %>
+<%= link_to 'Back', :back %>
