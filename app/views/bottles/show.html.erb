@@ -36,5 +36,5 @@
 </p>
 
 <%= link_to 'Edit', edit_bottle_path(@bottle) %> |
-<%= link_to 'View my bottles', bottles_path %>
+<%= link_to 'View my bottles', users_show_path(current_user.id) %>
 <%= link_to 'Back', :back %>

@@ -1,2 +1,37 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>
+    <%= current_user.email %>'s Cellar:
+  </strong>
+  </p>
+
+
+<%# iterate through @wine.bottles %>
+<table>
+  <% @bottles.each do |bottle| %>
+          <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+            <td class="list_description">
+              <dl>
+                <dd><strong><%= bottle.wine.wine_name %></strong></dd>
+                <dd><%= bottle.to_label %></dd>
+              </dl>
+              <dl>
+                <dd><%= strip_tags(bottle.comment) %></dd>
+              </dl>
+            </td>
+
+
+            <td class="list_actions">
+              <%= link_to 'Show', bottle %><br/>
+              <%= link_to 'Edit', edit_bottle_path(bottle) %><br/>
+              <%= link_to 'Destroy', bottle, method: :delete,
+                          data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+  <% end %>
+</table> <br />
+
+
+<%= link_to 'Add a bottle', new_bottle_path %>
+<%= link_to 'View Wines', wines_path %>

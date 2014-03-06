@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create!(email: params[:user][:email],
+    User.create!(email: params[:user][:email],
                 password: params[:user][:password],
                 password_confirmation: params[:user][:password_confirmation])
   end
@@ -22,5 +22,6 @@ class UsersController < ApplicationController
   end
 
   def show
+    @bottles = Bottle.find_all_by_user_id( current_user.id )
   end
 end
