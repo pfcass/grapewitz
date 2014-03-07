@@ -13,6 +13,9 @@
 <p>
   <strong>Price:</strong>
   <%= @bottle.price %>
+  <% if @bottle.list_price != nil && @bottle.list_price > 0.0%>
+    <%= "(lists for #{@bottle.list_price})" %>
+  <% end %>
 </p>
 
 <p>

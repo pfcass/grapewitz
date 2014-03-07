@@ -12,6 +12,11 @@ class Bottle < ActiveRecord::Base
 
   after_initialize :init
 
+  # CONSTANTS
+  HIDDEN             = 0
+  VISIBLE_TO_FRIENDS = 0x1
+  VISIBLE_TO_ALL     = 0x2
+
   def inspect
     "#{self.wine.brand.name}.#{self.wine.variety.name}:  #{self.user.email}:  #{self.quantity}"
   end
@@ -20,13 +25,49 @@ class Bottle < ActiveRecord::Base
     self.quantity ||= 1
     self.purchased_on ||= Time.now
     self.rating ||= 0
+    self.visibility ||= VISIBLE_TO_ALL
   end
 
   def to_label
     str = "Got #{pluralize( self.quantity, 'bottle')} from #{self.store.name} "
-    if self.price != NIL
-      str += "@ #{number_to_currency( self.price )} "
-    end
+    str += cost
     str += " purchased on #{self.purchased_on} with rating of #{self.rating}."
   end
+
+  def cost
+    if self.price && self.list_price
+      "for #{number_to_currency(self.price)} (list )#{number_to_currency(self.list_price)}"
+    elsif self.price
+      "for #{number_to_currency(self.price)}"
+    else
+      ""
+    end
+  end
+
+  # override the setter to strip a dollar sign from the input
+  def list_price=(value)
+    set_price(value, :list_price)
+  end
+
+  def price=(value)
+    set_price(value, :price)
+  end
+
+  def set_price(value, tag)
+    value = value.to_s.tr('$', '').to_f
+    if value > 0.0
+      write_attribute(tag, value)
+    end
+  end
+
+  def visible?( id )
+    if self.user_id == id
+      true
+    elsif !(self.visibility |= HIDDEN)
+      true
+    else
+      false
+    end
+  end
+
 end

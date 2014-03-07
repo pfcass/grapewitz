@@ -8,48 +8,52 @@
   </strong>
   <% comments = @wine.comments %>
   <% if comments != NIL %>
-  <%	 comments.each do |c| %>
-       <p>
-         <% if c.user_id != current_user.id %>
+      <% comments.each do |c| %>
+        <p>
+          <% if c.user_id != current_user.id %>
               <%= c.user.email %> says:
-         <% end %>
-         <%= c.comment %>
-       </p>
-      <% end %>
-  <% end %>
+          <% end %>
+          <%= c.comment %>
+        </p>
+    <% end %>
+<% end %>
 </p>
 
 
 <%# iterate through @wine.bottles %>
 <table>
   <% @wine.bottles.each do |bottle| %>
-      <% if params[:show_all] == 'true' || current_user.id == bottle.user_id %>
-         <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-           <td class="list_description">
-             <dl>
-                <dd><%= bottle.to_label %></dd>
-             </dl>
-             <dl>
-               <% if bottle.user_id != current_user.id %>
-                   <dd>
-                    <%= bottle.user.email %> says:
-                   </dd>
-               <% end %>
-               <%= strip_tags(bottle.comment) %>
-             </dl>
-           </td>
+      <% if bottle.visible?(current_user.id) == true %>
+          <% if params[:show_all] == 'true' || current_user.id == bottle.user_id %>
+              <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+                <td class="list_description">
+                  <dl>
+                    <dd><%= bottle.to_label %></dd>
+                  </dl>
+                  <dl>
+                    <% if bottle.user_id != current_user.id %>
+                        <dd>
+                          <%= bottle.user.email %> says:
+                        </dd>
+                    <% end %>
+                    <%= strip_tags(bottle.comment) %>
+                  </dl>
+                </td>
 
 
-            <td class="list_actions">
-              <%= link_to 'Show', bottle %><br/>
-              <%= link_to 'Edit', edit_bottle_path(bottle) %><br/>
-              <%= link_to 'Destroy', bottle, method: :delete,
-                          data: { confirm: 'Are you sure?' } %>
-            </td>
-         </tr>
-        <% end %>
+                <td class="list_actions">
+                  <%= link_to 'Show', bottle %>
+                  <br/>
+                  <%= link_to 'Edit', edit_bottle_path(bottle) %>
+                  <br/>
+                  <%= link_to 'Destroy', bottle, method: :delete,
+                              data: {confirm: 'Are you sure?'} %>
+                </td>
+              </tr>
+          <% end %>
+      <% end %>
   <% end %>
-</table> <br />
+</table> <br/>
 
 
 <%= link_to 'Back', wines_path %>
