@@ -2,23 +2,51 @@
 <html>
 <head>
   <title>Grapewitz</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class='<%= controller.controller_name %>'>
 
-<% if current_user != NIL %>
-   <p class="logout"><%= link_to "Logout",  destroy_user_session_path, method: :delete%></p>
-<% end %>
 
-<%	 if current_user  && current_user.admin? %>
-    <p><%= link_to "Manage Winos",  users_index_path, method: :get%></p>
-<%	 end %>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div id="container">
 
-<%= yield %>
+  <div id="header">
+    <h1 style="text-align: center;">Welcome to Grapewitz</h1>
+    <% if notice != nil %>
+        <p class="notice"><%= notice %></p>
+    <% end %>
+
+    <% if alert != nil %>
+        <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <%= yield :header %>
+  </div>
+
+  <div id="menu">
+    <% if current_user != NIL %>
+        <p class="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete %></p>
+    <% end %>
+
+    <% if current_user && current_user.admin? %>
+        <p><%= link_to "Manage Winos", users_index_path, method: :get %></p>
+    <% end %>
+
+    <%= yield :left_sidebar%>
+  </div>
+
+  <div id="content" style="background-color:#EEEEEE;width:80%;float:left;">
+    <%= yield %>
+  </div>
+
+  <div id="footer" style="background-color:#FFA500;clear:both;text-align:left;">
+    <%= yield :footer %>
+    Copyright © Casswitz Enterprises
+  </div>
+
+</div>
+
 
 </body>
 </html>

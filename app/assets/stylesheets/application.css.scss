@@ -11,3 +11,17 @@
  *= require_self
  *= require_tree .
  */
+#container {
+    width:100%;
+    background-color: lightblue;
+}
+
+#header {
+
+}
+
+#menu {
+  background-color: aqua;
+  width:20%;
+  float:left;
+}
