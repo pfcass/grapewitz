@@ -11,19 +11,35 @@
  *= require_self
  *= require_tree .
  */
+
 #container {
     width:100%;
-    background-color: lightblue;
+    background-color: #aba6a6;
 }
 
 #header {
+  margin:20px;
+  h1 {
+    text-align: center;
+  }
   h3 {
     font-style: italic;
   }
 }
 
 #menu {
-  background-color: aqua;
+  background-color: #aba6a6;
   width:20%;
   float:left;
+}
+
+#content {
+  background-color: #aba6a6;
+  width:80%;
+  float:left;
+}
+
+#footer {
+  width:100%;
+  background-color: #aba6a6;
 }

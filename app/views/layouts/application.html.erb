@@ -12,7 +12,7 @@
 <div id="container">
 
   <div id="header">
-    <h1 style="text-align: center;">Welcome to Grapewitz</h1>
+    <h1>Welcome to Grapewitz</h1>
     <% if notice != nil %>
         <p class="notice"><%= notice %></p>
     <% end %>
@@ -36,11 +36,11 @@
     <%= yield :left_sidebar%>
   </div>
 
-  <div id="content" style="background-color:#EEEEEE;width:80%;float:left;">
+  <div id="content">
     <%= yield %>
   </div>
 
-  <div id="footer" style="background-color:#FFA500;clear:both;text-align:left;">
+  <div id="footer">
     <%= yield :footer %>
     Copyright © Casswitz Enterprises
   </div>
