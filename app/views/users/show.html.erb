@@ -1,10 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>
-    <%= current_user.email %>'s Cellar:
-  </strong>
-  </p>
+
+<% content_for :header do %>
+    <div>
+      <h3 style="text-align: center">This is the home page for <%= current_user.user_name %></h3>
+
+      <p><%= current_user.greeting %>></p>
+    </div>
+<% end %>
+
+
+
+<% content_for :left_sidebar do %>
+    <div>
+      MY LINKS:
+
+      <%= button_to "HOME", :root, class: "button", method: :get %>
+      <%= button_to 'BACK', :back, class: "button", method: :get %>
+      <%= button_to 'EDIT MY ACCOUNT', users_update_path, class: "button", method: :get %>
+
+    </div>
+<% end %>
 
 
 <%# iterate through @wine.bottles %>

@@ -11,17 +11,16 @@
  *= require_self
  *= require_tree .
  */
-
 /* pfcass: is this the right way to drag in variables? */
 @import 'scaffolds';
 
 #container {
-    width:100%;
-    background-color: $background-color;
+  width: 100%;
+  background-color: $background-color;
 }
 
 #header {
-  margin:20px;
+  margin: 20px;
   h1 {
     text-align: center;
   }
@@ -32,21 +31,73 @@
 
 #menu {
   background-color: $background-color;
-  width:20%;
-  float:left;
+  width: 20%;
+  float: left;
 }
 
 #content {
   background-color: $background-color;
-  width:80%;
-  float:left;
-    h3 {
-      text-align: center;
+  width: 80%;
+  float: left;
+  h3 {
+    text-align: center;
   }
 }
 
 #footer {
-  width:100%;
+  width: 100%;
   background-color: $background-color;
 }
 
+
+.list_line_even {
+  background: rgba(245, 248, 167, 0.70);
+}
+
+.list_line_odd {
+  background: rgba(227, 221, 149, 0.75);
+}
+table {
+  border-collapse: collapse;
+}
+
+table tr td {
+  padding: 10px;
+  vertical-align: top;
+}
+/*
+
+.variety_name {
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+
+.list_image {
+  width: 60px;
+  height: 70px;
+}
+
+.list_description {
+  width: 60%;
+
+  dl {
+    margin: 0;
+  }
+
+  dt {
+    color: #844;
+    font-weight: bold;
+    font-size: larger;
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.list_actions {
+  font-size: x-small;
+  text-align: right;
+  padding-left: 1em;
+}
+*/

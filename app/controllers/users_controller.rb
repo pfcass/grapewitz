@@ -14,7 +14,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       if user = User.create!(email: params[:user][:email],
                       password: params[:user][:password],
-                      password_confirmation: params[:user][:password_confirmation])
+                      password_confirmation: params[:user][:password_confirmation],
+                      user_name: params[:user][:user_name],
+                      greeting: params[:user][:greeting])
 
         format.html { redirect_to users_index_path, notice: 'Wino was successfully created.' }
         format.json { render action: 'show', status: :created, location: user }
