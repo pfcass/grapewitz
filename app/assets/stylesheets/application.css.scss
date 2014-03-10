@@ -40,9 +40,13 @@
   background-color: $background-color;
   width:80%;
   float:left;
+    h3 {
+      text-align: center;
+  }
 }
 
 #footer {
   width:100%;
   background-color: $background-color;
 }
+

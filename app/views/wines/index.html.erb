@@ -14,37 +14,38 @@
       MY LINKS:
 
       <%= button_to "MY_CELLAR", users_show_path(current_user.id), class: "button", method: :get %>
-      <%= button_to "NEW USER", users_new_path, class: "button", method: :get %>
       <%= button_to 'NEW WINE', new_wine_path, class: "button", method: :get %>
 
       USERS
+      <%= button_to "NEW USER", users_new_path, class: "button", method: :get %>
       <div>
-      <%	 @users.each do |u| %>
-      <%=	    link_to u.email, users_show_path(u) %>
-      <%	 end %>
+        <% @users.each do |u| %>
+            <%= link_to u.email, users_show_path(u) %>
+        <% end %>
       </div>
     </div>
 <% end %>
 
-<table>
+<table style="width:100%">
+  <tr>
+    <td colspan="2"></td>
+    <h3>Wine our friends have bought</h3>
+  </tr>
   <% @wines.each do |wine| %>
+
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-        <td class="list_description">
-          <dl>
-            <dd>
-                <%= link_to "#{ pluralize(wine.num_bottles(true, current_user.id), "bottles") }",
-                            bottles_path( :wine_id => wine.id )%>
-                <%=	link_to "#{wine.wine_name}", bottles_path( :wine_id => wine.id ) %>
-              <% if wine.comments.first %>
-                <dl><i><%= truncate(wine.comments.first.comment, length: 64, separator: ' ') %></i></dl>
-            <% end %>
-            </dd>
-          </dl>
-
-
+        <td class="list_description" style="width:30%">
+          <%= link_to "#{ pluralize(wine.num_bottles(true, current_user.id), "bottles") }",
+                      bottles_path(:wine_id => wine.id) %>
+          <%= link_to "#{wine.wine_name}", bottles_path(:wine_id => wine.id) %>
         </td>
-
+        <td style="width:70">
+          <% if wine.comments.first %>
+              <i><%= truncate(wine.comments.first.comment, length: 80, separator: ' ') %></i>
+          <% end %>
+        </td>
       </tr>
+
   <% end %>
 </table>
 
@@ -53,7 +54,7 @@
 
 
 <% content_for :footer do %>
-  <div>
-    <p><sup>*</sup>Thomas Pain</p>
-  </div>
+    <div>
+      <p><sup>*</sup>Thomas Pain</p>
+    </div>
 <% end %>
