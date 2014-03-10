@@ -12,9 +12,12 @@
  *= require_tree .
  */
 
+/* pfcass: is this the right way to drag in variables? */
+@import 'scaffolds';
+
 #container {
     width:100%;
-    background-color: #aba6a6;
+    background-color: $background-color;
 }
 
 #header {
@@ -28,18 +31,18 @@
 }
 
 #menu {
-  background-color: #aba6a6;
+  background-color: $background-color;
   width:20%;
   float:left;
 }
 
 #content {
-  background-color: #aba6a6;
+  background-color: $background-color;
   width:80%;
   float:left;
 }
 
 #footer {
   width:100%;
-  background-color: #aba6a6;
+  background-color: $background-color;
 }
