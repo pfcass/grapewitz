@@ -34,9 +34,16 @@ class Wine < ActiveRecord::Base
   def num_bottles( show_all, current_user_id )
     num = 0
     bottles.each do |b|
-      if b.visible?(current_user_id) && (show_all || b.user_id == current_user_id)
+      if b.visible?(current_user_id) == false
+        next
+      end
+
+      if show_all || b.user_id == current_user_id
         num += b.quantity
       end
+=begin
+
+=end
     end
     num
   end

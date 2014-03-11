@@ -62,11 +62,14 @@ class Bottle < ActiveRecord::Base
 
   def visible?( id )
     if self.user_id == id
+      # mine always show
       true
-    elsif !(self.visibility |= HIDDEN)
-      true
-    else
+    elsif self.visibility == HIDDEN
+      # not mine, but hidden
       false
+    else
+      # otherwise, count it
+      true
     end
   end
 
