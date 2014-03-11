@@ -1,4 +1,25 @@
-<p id="notice"><%= notice %></p>
+<% content_for :header do %>
+    <div>
+      <h3 style="text-align: center">"These are the wines that fry men's (and women's) souls"<sup>*</sup></h3>
+
+      <p>Welcome to Grapewitz, a place you can go after a couple of glasses of wine to
+        discuss your purchase with friends, keep track of how much you haven't spent
+        on wine by buying at a discount (savings you'll need for that nice, new liver),
+        and generally having a merry old time. </p>
+    </div>
+<% end %>
+
+<% content_for :left_sidebar do %>
+    <div>
+      MY LINKS:
+
+      <%= button_to "MY_CELLAR", users_show_path(current_user.id), class: "button", method: :get %>
+      <%= button_to 'NEW WINE', new_wine_path, class: "button", method: :get %>
+
+      USERS
+    </div>
+<% end %>
+
 
 <p>
   <strong>Quantity:</strong>

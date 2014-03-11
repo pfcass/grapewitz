@@ -1,38 +1,64 @@
-<h1>Listing bottles</h1>
+<% content_for :header do %>
+    <div>
+      <h3 style="text-align: center">Bottles for
+        <%=  @id == -1 ? 'All Users' :
+                     User.find(@id).user_name == nil ? User.find(@id).email :
+                             User.find(@id).user_name  %>
+      </h3>
+
+      <p>Welcome to Grapewitz, a place you can go after a couple of glasses of wine to
+        discuss your purchase with friends, keep track of how much you haven't spent
+        on wine by buying at a discount (savings you'll need for that nice, new liver),
+        and generally having a merry old time. </p>
+    </div>
+<% end %>
+
+<% content_for :left_sidebar do %>
+    <div>
+      MY LINKS:
+
+      <%= button_to 'HOME', wines_path, class: "button", method: :get %>
+      <%= button_to 'BACK', :back, class: "button", method: :get %>
+
+    </div>
+<% end %>
+
 
 <table>
   <thead>
-    <tr>
-      <th>Date</th>
-      <th>Quantity</th>
-      <th>Price</th>
-      <th>Rating</th>
-      <th>Comment</th>
-      <th>Brand</th>
-      <th>Variety</th>
-      <th>Store</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th>Date</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Rating</th>
+    <th>Comment</th>
+    <th>Brand</th>
+    <th>Variety</th>
+    <th>Store</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @bottles.each do |bottle| %>
-      <tr>
-        <td><%= bottle.purchased_on %></td>
-        <td><%= bottle.quantity %></td>
-        <td><%= bottle.price %></td>
-        <td><%= bottle.rating %></td>
-        <td><%= bottle.comment %></td>
-        <td><%= bottle.wine.brand.name %></td>
-        <td><%= bottle.wine.variety.name %></td>
-        <td><%= bottle.store.name %></td>
-        <td><%= link_to 'Show', bottle %></td>
-        <td><%= link_to 'Edit', edit_bottle_path(bottle) %></td>
-        <td><%= link_to 'Destroy', bottle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @bottles.each do |bottle| %>
+      <% if @id == -1 || @id == bottle.user_id %>
+          <tr>
+            <td><%= bottle.purchased_on %></td>
+            <td><%= bottle.quantity %></td>
+            <td><%= bottle.price %></td>
+            <td><%= bottle.rating %></td>
+            <td><%= bottle.comment %></td>
+            <td><%= bottle.wine.brand.name %></td>
+            <td><%= bottle.wine.variety.name %></td>
+            <td><%= bottle.store.name %></td>
+            <td><%= link_to 'Show', bottle %></td>
+            <td><%= link_to 'Edit', edit_bottle_path(bottle) %></td>
+            <td><%= link_to 'Destroy', bottle, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          </tr>
+      <% end %>
+  <% end %>
   </tbody>
 </table>
 

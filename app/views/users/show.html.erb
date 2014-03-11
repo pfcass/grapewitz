@@ -5,7 +5,7 @@
     <div>
       <h3 style="text-align: center">This is the home page for <%= current_user.user_name %></h3>
 
-      <p><%= current_user.greeting %>></p>
+      <p><%= current_user.greeting %></p>
     </div>
 <% end %>
 
@@ -13,11 +13,13 @@
 
 <% content_for :left_sidebar do %>
     <div>
-      MY LINKS:
+      <h3>MY LINKS:</h3>
 
       <%= button_to "HOME", :root, class: "button", method: :get %>
       <%= button_to 'BACK', :back, class: "button", method: :get %>
       <%= button_to 'EDIT MY ACCOUNT', users_edit_path, class: "button", method: :get %>
+      <h3>Local actions</h3>
+      <%= button_to 'Add a bottle', new_bottle_path, class: "button", method: :get %>
 
     </div>
 <% end %>
@@ -26,28 +28,21 @@
 <%# iterate through @wine.bottles %>
 <table>
   <% @bottles.each do |bottle| %>
-          <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-            <td class="list_description">
-              <dl>
-                <dd><strong><%= bottle.wine.wine_name %></strong></dd>
-                <dd><%= bottle.to_label %></dd>
-              </dl>
-              <dl>
-                <dd><%= strip_tags(bottle.comment) %></dd>
-              </dl>
-            </td>
 
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td class="list_description" style="width:40%">
+          <%= link_to "#{bottle.purchased_on} - #{ pluralize(bottle.quantity, "bottle") }",
+                      edit_bottle_path(bottle.id) %>
+          <%= link_to "#{bottle.wine.wine_name}", bottles_path(:wine_id => bottle.wine.id) %>
+        </td>
+        <td style="width:60%">
+          <% if bottle.comment %>
+              <i><%= truncate(bottle.comment, length: 80, separator: ' ') %></i>
+          <% end %>
+        </td>
+      </tr>
 
-            <td class="list_actions">
-              <%= link_to 'Show', bottle %><br/>
-              <%= link_to 'Edit', edit_bottle_path(bottle) %><br/>
-              <%= link_to 'Destroy', bottle, method: :delete,
-                          data: { confirm: 'Are you sure?' } %>
-            </td>
-          </tr>
   <% end %>
 </table> <br />
 
 
-<%= link_to 'Add a bottle', new_bottle_path %>
-<%= link_to 'View Wines', wines_path %>

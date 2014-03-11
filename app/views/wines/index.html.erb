@@ -35,7 +35,7 @@
 
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td class="list_description" style="width:30%">
-          <%= link_to "#{ pluralize(wine.num_bottles(true, current_user.id), "bottles") }",
+          <%= link_to "#{ pluralize(wine.num_bottles(true, current_user.id), "bottle") }",
                       bottles_path(:wine_id => wine.id) %>
           <%= link_to "#{wine.wine_name}", bottles_path(:wine_id => wine.id) %>
         </td>
