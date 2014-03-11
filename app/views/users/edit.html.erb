@@ -1,2 +1,40 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<% content_for :header do %>
+    <div>
+      <h3 style="text-align: center"><%= "Edit user parameters for #{@user.user_name}" %></h3>
+      <% if @user.greeting != nil %>
+          <p> <%=   @user.greeting %> </p>
+      <% end %>
+    </div>
+<% end %>
+
+<% content_for :left_sidebar do %>
+    <div>
+      MY LINKS:
+
+      <%= button_to "BACK", users_show_path(current_user.id), class: "button", method: :get %>
+
+    </div>
+<% end %>
+
+
+<h1>Users#edit for <%= current_user.user_name %></h1>
+<%= form_for(@user, :url => users_update_path) do |f| %>
+
+    <!--div><%#= f.label :password %>
+      <br/>
+      <%#= f.password_field :password %></div>
+
+    <div><%#= f.label :password_confirmation %>
+      <br/>
+      <%#= f.password_field :password_confirmation %></div-->
+
+    <div><%= f.label :user_name %>
+      <br/>
+      <%= f.text_field :user_name %></div>
+
+    <div><%= f.label :greeting %>
+      <br/>
+      <%= f.text_area :greeting %></div>
+
+    <div><%= f.submit "Save Changes" %></div>
+<% end %>

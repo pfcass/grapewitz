@@ -4,8 +4,10 @@ Grapewitz::Application.routes.draw do
   get "users/index"
   get "users/new"
   post "users/create"
-  get "users/update"
+  patch "users/update"
   get "users/edit"
+  put "users/edit"
+  patch "users/edit"
   get "users/destroy"
   get "users/show"
   devise_for :users
