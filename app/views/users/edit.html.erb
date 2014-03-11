@@ -17,7 +17,8 @@
 <% end %>
 
 
-<h1>Users#edit for <%= current_user.user_name %></h1>
+<h1>edit for <%= current_user.email %></h1>
+<p><strong>CURRENTLY UNABLE TO MODIFY PASSWORD W/OUT GETTING LOGGED OUT</strong></p>
 <%= form_for(@user, :url => users_update_path) do |f| %>
 
     <!--div><%#= f.label :password %>
