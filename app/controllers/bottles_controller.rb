@@ -6,7 +6,7 @@ class BottlesController < ApplicationController
   def index
     if params[:wine_id] != nil
       wine_id = params[:wine_id].to_i
-      @bottles = Bottle.visible_bottles( wine_id )
+      @bottles = Bottle.visible_bottles( current_user.id, wine_id )
       if @bottles != nil
         @users = User.also_have( @bottles.first )
       else
@@ -15,7 +15,7 @@ class BottlesController < ApplicationController
       @title = "Purchases of Bottles of #{Wine.find(wine_id).name}"
     else
       @title = "Purchase of All Bottles"
-      @bottles = Bottle.visible_bottles
+      @bottles = Bottle.visible_bottles( current_user.id )
       @users = []
     end
   end
