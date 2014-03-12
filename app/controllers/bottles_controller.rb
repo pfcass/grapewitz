@@ -4,8 +4,20 @@ class BottlesController < ApplicationController
   # GET /bottles
   # GET /bottles.json
   def index
-    @bottles = Bottle.all
-    @id = params[:user_id] == nil ? -1 : params[:user_id].to_i
+    if params[:wine_id] != nil
+      wine_id = params[:wine_id].to_i
+      @bottles = Bottle.visible_bottles( wine_id )
+      if @bottles != nil
+        @users = User.also_have( @bottles.first )
+      else
+        @user = []
+      end
+      @title = "Purchases of Bottles of #{Wine.find(wine_id).name}"
+    else
+      @title = "Purchase of All Bottles"
+      @bottles = Bottle.visible_bottles
+      @users = []
+    end
   end
 
   # GET /bottles/1

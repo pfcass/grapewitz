@@ -25,6 +25,7 @@
 
   <div id="menu">
     <% if current_user != NIL %>
+        <p><%= current_user.email %></p>
         <p class="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete %>
         <%= link_to "Home", :root %>
         <%= link_to 'Back', :back %></p>

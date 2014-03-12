@@ -6,7 +6,11 @@
       <p>Welcome to Grapewitz, a place you can go after a couple of glasses of wine to
         discuss your purchase with friends, keep track of how much you haven't spent
         on wine by buying at a discount (savings you'll need for that nice, new liver),
-        and generally having a merry old time. </p>
+        and generally having a merry old time.
+      </p>
+      <p>
+        The main panel shows the wines that have been bought by our friends.
+      </p>
     </div>
 <% end %>
 
@@ -34,12 +38,12 @@
   <% @wines.each do |wine| %>
 
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-        <td class="list_description" style="width:30%">
+        <td class="list_description" style="width:40%">
           <%= link_to "#{ pluralize(wine.num_bottles(true, current_user.id), "bottle") }",
                       bottles_path(:wine_id => wine.id) %>
           <%= link_to "#{wine.wine_name}", wine_path(wine.id) %>
         </td>
-        <td style="width:70">
+        <td style="width:60">
           <% if wine.comments.first %>
               <i><%= truncate(wine.comments.first.comment, length: 80, separator: ' ') %></i>
           <% end %>

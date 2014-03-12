@@ -1,24 +1,21 @@
 <% content_for :header do %>
     <div>
-      <h3 style="text-align: center">Bottles for
-        <%=  @id == -1 ? 'All Users' :
-                     User.find(@id).user_name == nil ? User.find(@id).email :
-                             User.find(@id).user_name  %>
-      </h3>
-
-      <p>Welcome to Grapewitz, a place you can go after a couple of glasses of wine to
-        discuss your purchase with friends, keep track of how much you haven't spent
-        on wine by buying at a discount (savings you'll need for that nice, new liver),
-        and generally having a merry old time. </p>
+      <h3 style="text-align: center"><%=@title %></h3>
     </div>
 <% end %>
 
 <% content_for :left_sidebar do %>
     <div>
-      MY LINKS:
 
-      <%= button_to 'HOME', wines_path, class: "button", method: :get %>
-      <%= button_to 'BACK', :back, class: "button", method: :get %>
+      <% if !@users.empty? %>
+          <p>USERS WHO ALSO OWN THIS WINE</p>
+
+          <div>
+            <% @users.each do |u| %>
+                <%= link_to u.email, users_show_path(u) %>
+            <% end %>
+          </div>
+      <% end %>
 
     </div>
 <% end %>
@@ -29,40 +26,23 @@
   <tr>
     <th>Date</th>
     <th>Quantity</th>
-    <th>Price</th>
-    <th>Rating</th>
+    <th>Price/List</th>
     <th>Comment</th>
-    <th>Brand</th>
-    <th>Variety</th>
     <th>Store</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Purchaser</th>
   </tr>
   </thead>
 
   <tbody>
   <% @bottles.each do |bottle| %>
-      <% if @id == -1 || @id == bottle.user_id %>
           <tr>
             <td><%= bottle.purchased_on %></td>
             <td><%= bottle.quantity %></td>
-            <td><%= bottle.price %></td>
-            <td><%= bottle.rating %></td>
+            <td><%= bottle.price %> / <%= bottle.list_price %></td>
             <td><%= bottle.comment %></td>
-            <td><%= bottle.wine.brand.name %></td>
-            <td><%= bottle.wine.variety.name %></td>
             <td><%= bottle.store.name %></td>
-            <td><%= link_to 'Show', bottle %></td>
-            <td><%= link_to 'Edit', edit_bottle_path(bottle) %></td>
-            <td><%= link_to 'Destroy', bottle, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+            <td><%= bottle.user.name %></td>
           </tr>
-      <% end %>
   <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Bottle', new_bottle_path %>
-<%= link_to 'Back', :back %>

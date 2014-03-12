@@ -6,16 +6,16 @@ class Bottle < ActiveRecord::Base
   belongs_to :user
 
   validates :wine_id, :store_id, presence: true
-  validates :rating, numericality: { only_integer: true,
-                                     greater_than_or_equal_to: 0,
-                                     less_than_or_equal_to: 5 }
+  validates :rating, numericality: {only_integer: true,
+                                    greater_than_or_equal_to: 0,
+                                    less_than_or_equal_to: 5}
 
   after_initialize :init
 
   # CONSTANTS
-  HIDDEN             = 0
+  HIDDEN = 0
   VISIBLE_TO_FRIENDS = 0x1
-  VISIBLE_TO_ALL     = 0x2
+  VISIBLE_TO_ALL = 0x2
 
   def inspect
     "#{self.wine.brand.name}.#{self.wine.variety.name}:  #{self.user.email}:  #{self.quantity}"
@@ -29,7 +29,7 @@ class Bottle < ActiveRecord::Base
   end
 
   def to_label
-    str = "Got #{pluralize( self.quantity, 'bottle')} from #{self.store.name} "
+    str = "Got #{pluralize(self.quantity, 'bottle')} from #{self.store.name} "
     str += cost
     str += " purchased on #{self.purchased_on} with rating of #{self.rating}."
   end
@@ -60,7 +60,7 @@ class Bottle < ActiveRecord::Base
     end
   end
 
-  def visible?( id )
+  def visible?(id)
     if self.user_id == id
       # mine always show
       true
@@ -72,5 +72,14 @@ class Bottle < ActiveRecord::Base
       true
     end
   end
+
+  def self.visible_bottles(wine_id=nil)
+    if wine_id == nil
+      @bottles = Bottle.where("visibility != 0")
+    else
+      @bottles = Bottle.where("wine_id == ? AND visibility != 0", wine_id)
+    end
+  end
+
 
 end
