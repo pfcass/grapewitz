@@ -1,5 +1,6 @@
 <% content_for :header do %>
     <div>
+      <h2>Welcome to Grapewitz</h2>
       <h3 style="text-align: center">"These are the wines that fry men's (and women's) souls"<sup>*</sup></h3>
 
       <p>Welcome to Grapewitz, a place you can go after a couple of glasses of wine to
@@ -11,18 +12,17 @@
 
 <% content_for :left_sidebar do %>
     <div>
-      MY LINKS:
 
-      <%= button_to "MY_CELLAR", users_show_path(current_user.id), class: "button", method: :get %>
-      <%= button_to 'NEW WINE', new_wine_path, class: "button", method: :get %>
+      <%= button_to "MY CELLAR", users_show_path(current_user.id), class: "button", method: :get %>
+      <%= button_to 'NEW WINE', new_wine_path, class: "button", method: :get %><br>
 
-      USERS
-      <%= button_to "NEW USER", users_new_path, class: "button", method: :get %>
+      USERS:
       <div>
         <% @users.each do |u| %>
             <%= link_to u.email, users_show_path(u) %>
         <% end %>
-      </div>
+      </div><br>
+      <%= button_to "NEW USER", users_new_path, class: "button", method: :get %>
     </div>
 <% end %>
 
@@ -37,7 +37,7 @@
         <td class="list_description" style="width:30%">
           <%= link_to "#{ pluralize(wine.num_bottles(true, current_user.id), "bottle") }",
                       bottles_path(:wine_id => wine.id) %>
-          <%= link_to "#{wine.wine_name}", bottles_path(:wine_id => wine.id) %>
+          <%= link_to "#{wine.wine_name}", wine_path(wine.id) %>
         </td>
         <td style="width:70">
           <% if wine.comments.first %>

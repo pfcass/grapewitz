@@ -25,13 +25,7 @@ class BottlesController < ApplicationController
   # GET /bottles/1/edit
   def edit
     this_bottle = Bottle.find(params[:id].to_i)
-    bottles = Bottle.where( "wine_id = ?", this_bottle.wine_id )
-    @users = []
-    bottles.each do |b|
-      if b.user_id != this_bottle.user_id
-        @users.push( User.find( b.user_id ) )
-      end
-    end
+    @users = User.also_have( this_bottle )
   end
 
   # POST /bottles
@@ -55,7 +49,7 @@ class BottlesController < ApplicationController
   def update
     respond_to do |format|
       if @bottle.update(bottle_params)
-        format.html { redirect_to @bottle, notice: 'Bottle was successfully updated.' }
+        format.html { redirect_to users_show_path(current_user.id), notice: 'Bottle was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

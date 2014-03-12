@@ -1,21 +1,19 @@
 <% content_for :header do %>
     <div>
+      <h2>View or Modify A Purchase</h2>
       <h3 style="text-align: center"><%= "Details of #{@bottle.wine.wine_name} purchase on #{@bottle.purchased_on}"%></h3>
 
-      <p>blah blah</p>
+      <p>You can user this screen to view the details of your purchase.</p>
     </div>
 <% end %>
 
 <% content_for :left_sidebar do %>
     <div>
-      MY LINKS:
-
       <%= button_to "MY CELLAR", users_show_path(current_user.id), class: "button", method: :get %>
-      <%= button_to 'HOME', wines_path, class: "button", method: :get %>
 
-      USERS WHO ALSO OWN <%=  @bottle.wine.wine_name %>
+      <p>USERS WHO ALSO OWN</p> <strong><%=  @bottle.wine.wine_name %></strong><br>
       <div>
-        <% @users.uniq.each do |u| %>
+        <% @users.each do |u| %>
             <%= link_to u.email, users_show_path(u) %>
         <% end %>
       </div>

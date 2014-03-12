@@ -13,4 +13,15 @@ class User < ActiveRecord::Base
       false
     end
   end
+
+  def self.also_have( this_bottle )
+    bottles = Bottle.where( "wine_id = ?", this_bottle.wine_id )
+    @users = []
+    bottles.each do |b|
+      if b.user_id != this_bottle.user_id
+        @users.push( User.find( b.user_id ) )
+      end
+    end
+    @users.uniq
+  end
 end
