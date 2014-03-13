@@ -12,7 +12,7 @@
 
           <div>
             <% @users.each do |u| %>
-                <%= link_to u.email, users_show_path({:id => u.id}) %>
+                <%= link_to u.email, user_path(u.id) %>
             <% end %>
           </div>
       <% end %>

@@ -10,12 +10,12 @@
 <% content_for :left_sidebar do %>
     <div>
       <%#= button_to "MY CELLAR", users_show_path({:id => current_user.id}), class: "button", method: :get %>
-      <%= link_to "MY CELLAR", users_show_path({:id => current_user.id}) %>
+      <%= link_to "MY CELLAR", user_path(current_user.id) %>
 
       <p>USERS WHO ALSO OWN</p> <strong><%=  @bottle.wine.wine_name %></strong><br>
       <div>
         <% @users.each do |u| %>
-            <%= link_to u.email, users_show_path(u) %>
+            <%= link_to u.email, user_path(u.id) %>
         <% end %>
       </div>
     </div>

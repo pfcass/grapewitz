@@ -1,15 +1,8 @@
 Grapewitz::Application.routes.draw do
   resources :regions
 
-  get "users/index"
-  get "users/new"
-  post "users/create"
-  patch "users/update"
-  get "users/edit"
-  put "users/edit"
-  patch "users/edit"
-  get "users/destroy"
-  get "users/show"
+
+  resources :users
   devise_for :users
   #get "cellar/index"
   resources :bottles
