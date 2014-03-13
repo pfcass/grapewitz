@@ -53,7 +53,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @bottles = Bottle.where( "user_id = #{current_user.id}" )
+    user_id = params[:id].to_i
+    @is_owner = user_id == current_user.id
+    if @is_owner == true
+      @title = "Cellar for #{User.find(user_id).name}"
+    else
+      @title = "My Cellar"
+    end
+    @bottles = Bottle.where( "user_id = #{user_id}" )
   end
 
 

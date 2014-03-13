@@ -17,13 +17,15 @@
 <% content_for :left_sidebar do %>
     <div>
 
-      <%= button_to "MY CELLAR", users_show_path(current_user.id), class: "button", method: :get %>
-      <%= button_to 'NEW WINE', new_wine_path, class: "button", method: :get %><br>
+      <%#= button_to "MY CELLAR", users_show_path({:id => current_user.id} ), class: "button", method: :get %>
+      <%= link_to "MY CELLAR", users_show_path({:id => current_user.id}) %>
 
-      USERS:
+      <h3>USERS:</h3>
+      <p>Here are a list of your friends who have accounts on <i>Grapewitz</i></p>
+      <p>Click a link to see what they've bought</p>
       <div>
         <% @users.each do |u| %>
-            <%= link_to u.email, users_show_path(u) %>
+            <%= link_to u.email, users_show_path( {:id => u.id }) %>
         <% end %>
       </div><br>
       <%= button_to "NEW USER", users_new_path, class: "button", method: :get %>
@@ -33,7 +35,10 @@
 <table>
   <tr>
     <td colspan="2"></td>
-    <h3>Wine our friends have bought</h3>
+    <h3>These are the wines our friends have bought</h3>
+    <p>Click on the 'bottles' link to view the details of all purchase of that wine</p>
+    <p>Click on the wine name to view details about that variety and what all your
+    friends have to say about it</p>
   </tr>
   <% @wines.each do |wine| %>
 
@@ -49,9 +54,9 @@
           <% end %>
         </td>
       </tr>
-
   <% end %>
 </table>
+<%= button_to 'NEW WINE', new_wine_path, class: "button", method: :get %><br>
 
 <br>
 

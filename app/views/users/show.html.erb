@@ -1,9 +1,8 @@
-<p id="notice"><%= notice %></p>
 
 
 <% content_for :header do %>
     <div>
-      <h3 style="text-align: center">This is the home page for <%= current_user.name %></h3>
+      <h3 style="text-align: center"><%= @title %></h3>
 
       <p><%= current_user.greeting %></p>
     </div>
@@ -13,8 +12,6 @@
 
 <% content_for :left_sidebar do %>
     <div>
-      <h3>MY LINKS:</h3>
-
       <%= button_to 'EDIT MY ACCOUNT', users_edit_path, class: "button", method: :get %>
       <%= button_to 'ADD A BOTTLE', new_bottle_path, class: "button", method: :get %>
 
@@ -24,12 +21,19 @@
 
 <%# iterate through @wine.bottles %>
 <table>
+  <p id="notice"><%= notice %></p>
+
   <% @bottles.each do |bottle| %>
 
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td class="list_description" style="width:40%">
-          <%= link_to "#{bottle.purchased_on} - #{ pluralize(bottle.quantity, "bottle") }",
-                      edit_bottle_path(bottle.id) %>
+          <% if @is_owner == true %>
+              <%= link_to "#{bottle.purchased_on} - #{ pluralize(bottle.quantity, "bottle") }",
+                          edit_bottle_path(bottle.id) %>
+          <% else %>
+              <%= link_to "#{bottle.purchased_on} - #{ pluralize(bottle.quantity, "bottle") }",
+                         bottle_path(bottle.id) %>
+          <% end %>
           <%= link_to "#{bottle.wine.wine_name}", bottles_path(:wine_id => bottle.wine.id) %>
         </td>
         <td style="width:60%">
