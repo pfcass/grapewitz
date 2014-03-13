@@ -13,6 +13,7 @@ class WinesController < ApplicationController
   # GET /wines/1
   # GET /wines/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /wines/new
@@ -78,6 +79,8 @@ class WinesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_wine
       @wine = Wine.find(params[:id])
+      @comments = @wine.comments
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

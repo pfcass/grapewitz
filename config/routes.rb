@@ -4,7 +4,7 @@ Grapewitz::Application.routes.draw do
 
   resources :users
   devise_for :users
-  #get "cellar/index"
+
   resources :bottles
 
   resources :wines
@@ -15,7 +15,7 @@ Grapewitz::Application.routes.draw do
 
   resources :brands
 
-  resources :comments, only: [ :edit, :update ]
+  resources :comments, only: [ :create, :edit, :update ]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

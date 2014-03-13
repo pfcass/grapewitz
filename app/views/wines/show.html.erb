@@ -1,15 +1,28 @@
+<% content_for :header do %>
+    <div>
+      <h2><%= @wine.name %></h2>
+
+      <p>
+        <% if @comments.first.user_id != current_user.id %>
+            <%= @comments.first.user.email %> says:
+        <% end %>
+        <%= @comments.first.comment %>
+      </p>
+    </div>
+<% end %>
+
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  Wine:
-  <strong>
-    <%= @wine.brand.name %>
-    <%= @wine.variety.name %>
-  </strong>
-  <% comments = @wine.comments %>
-  <% if comments != NIL %>
-      <% comments.each do |c| %>
+<% if @comments != NIL && @comments.size > 1 %>
+    <p>
+      <strong>Here is what your friends have to say about <%= @wine.name %></strong>
+    </p>
+    <% @comments.each_with_index do |c, index| %>
         <p>
+          <% if index == 0 %>
+              <% next %>
+          <% end %>
           <% if c.user_id != current_user.id %>
               <%= c.user.email %> says:
           <% end %>
@@ -17,11 +30,36 @@
         </p>
     <% end %>
 <% end %>
-</p>
+
+<%= form_for(@comment, {:url => comments_path({:wine_id => @wine.id}) }) do |f| %>
+    <% if @comment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+          <ul>
+            <% @comment.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :comment %><br>
+      <%= f.text_area :comment %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
 
 
 <%# iterate through @wine.bottles %>
 <table>
+  <p>
+    <strong>... and here are the bottles your friends have purchased</strong>
+  </p>
+
   <% @wine.bottles.each do |bottle| %>
       <% if bottle.visible?(current_user.id) == true %>
           <% if params[:show_all] == 'true' || current_user.id == bottle.user_id %>
@@ -38,16 +76,6 @@
                     <% end %>
                     <%= strip_tags(bottle.comment) %>
                   </dl>
-                </td>
-
-
-                <td class="list_actions">
-                  <%= link_to 'Show', bottle %>
-                  <br/>
-                  <%= link_to 'Edit', edit_bottle_path(bottle) %>
-                  <br/>
-                  <%= link_to 'Destroy', bottle, method: :delete,
-                              data: {confirm: 'Are you sure?'} %>
                 </td>
               </tr>
           <% end %>
