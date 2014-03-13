@@ -11,7 +11,7 @@
 
 <% content_for :left_sidebar do %>
     <div>
-      <%= link_to "MY CELLAR", user_path(current_user.id) %>
+      <%= button_to "MY CELLAR", user_path(current_user.id), class: "button", method: :get %>
     </div>
 <% end %>
 

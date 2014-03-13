@@ -17,8 +17,7 @@
 <% content_for :left_sidebar do %>
     <div>
 
-      <%#= button_to "MY CELLAR", users_show_path({:id => current_user.id} ), class: "button", method: :get %>
-      <%= link_to "MY CELLAR", user_path(current_user.id) %>
+      <%= button_to "MY CELLAR", user_path(current_user.id), class: "button", method: :get %>
 
       <h3>USERS:</h3>
       <p>Here are a list of your friends who have accounts on <i>Grapewitz</i></p>

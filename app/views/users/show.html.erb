@@ -1,5 +1,3 @@
-
-
 <% content_for :header do %>
     <div>
       <h3 style="text-align: center"><%= @title %></h3>
@@ -12,7 +10,11 @@
 
 <% content_for :left_sidebar do %>
     <div>
-      <%= button_to 'EDIT MY ACCOUNT', edit_user_path, class: "button", method: :get %>
+      <% if @is_owner == false %>
+          <%= button_to "MY CELLAR", user_path(current_user.id), class: "button", method: :get %>
+      <% else %>
+          <%= button_to 'EDIT MY ACCOUNT', edit_user_path, class: "button", method: :get %>
+      <% end %>
       <%= button_to 'ADD A BOTTLE', new_bottle_path, class: "button", method: :get %>
 
     </div>
@@ -32,7 +34,7 @@
                           edit_bottle_path(bottle.id) %>
           <% else %>
               <%= link_to "#{bottle.purchased_on} - #{ pluralize(bottle.quantity, "bottle") }",
-                         bottle_path(bottle.id) %>
+                          bottle_path(bottle.id) %>
           <% end %>
           <%= link_to "#{bottle.wine.wine_name}", bottles_path(:wine_id => bottle.wine.id) %>
         </td>
@@ -44,6 +46,6 @@
       </tr>
 
   <% end %>
-</table> <br />
+</table> <br/>
 
 
