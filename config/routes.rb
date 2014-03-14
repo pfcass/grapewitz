@@ -2,9 +2,8 @@ Grapewitz::Application.routes.draw do
   resources :regions
 
 
-  resources :users
   devise_for :users
-
+  resources :users
   resources :bottles
 
   resources :wines
