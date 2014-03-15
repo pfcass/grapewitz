@@ -6,7 +6,7 @@ class WinesController < ApplicationController
   # GET /wines
   # GET /wines.json
   def index
-    @users = User.order(:email)
+    @users = User.where("id != ?", current_user.id).order(:email)
     @wines = Wine.order(:variety_id,:brand_id)
   end
 

@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    user_id = params[:id].to_i
+      user_id = params[:id].to_i
     @is_owner = user_id == current_user.id
     @title = "Cellar for #{User.find(user_id).name}"
     @greeting = User.find(user_id).greeting
