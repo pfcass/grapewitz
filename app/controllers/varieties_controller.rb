@@ -69,6 +69,6 @@ class VarietiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def variety_params
-      params.require(:variety).permit(:name)
+      params.require(:variety).permit(:name, :color, :fizz)
     end
 end

@@ -31,18 +31,6 @@
                                 :id, :name, :prompt => true) %>
         </div>
 
-        <div class="field">
-          <%= f.label :color %>
-          <br>
-          <%= f.select( :color, [['Red', Wine::RED], ['White',Wine::WHITE],['Rose',Wine::ROSE]]) %>
-        </div>
-
-        <div class="field">
-          <%= f.label :fizz %>
-          <br>
-          <%= f.select( :fizz, [['Still', Wine::STILL], ['Sparkling',Wine::FIZZY]]) %>
-        </div>
-
     <% end %>
 
     <div class="field">

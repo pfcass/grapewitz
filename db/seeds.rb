@@ -9,3 +9,5 @@
 User.create!(:email => "admin@grapewitz.com", :password => "password")
 
 Region.create!(:name => 'Unknown')
+
+Variety.create(:name => 'Pinot Gris', :color => 1, :fizz => 0)

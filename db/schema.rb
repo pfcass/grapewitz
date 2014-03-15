@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310115517) do
+ActiveRecord::Schema.define(version: 20140315142428) do
 
   create_table "bottles", force: true do |t|
     t.integer  "quantity"
@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 20140310115517) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "color"
+    t.integer  "fizz"
   end
 
   create_table "wines", force: true do |t|
@@ -94,8 +96,6 @@ ActiveRecord::Schema.define(version: 20140310115517) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "region_id"
-    t.integer  "color"
-    t.integer  "fizz"
   end
 
   add_index "wines", ["brand_id", "variety_id"], name: "by_brand_and_variety", unique: true

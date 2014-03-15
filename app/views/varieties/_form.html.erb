@@ -1,21 +1,36 @@
 <%= form_for(@variety) do |f| %>
-  <% if @variety.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@variety.errors.count, "error") %> prohibited this variety from being saved:</h2>
+    <% if @variety.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@variety.errors.count, "error") %> prohibited this variety from being saved:</h2>
 
-      <ul>
-      <% @variety.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @variety.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <br>
+      <%= f.text_field :name %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :color %>
+      <br>
+      <%= f.select(:color, [['Red', Variety::RED], ['White', Variety::WHITE], ['Rose', Variety::ROSE]]) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :fizz %>
+      <br>
+      <%= f.select(:fizz, [['Still', Variety::STILL], ['Sparkling', Variety::FIZZY]]) %>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
