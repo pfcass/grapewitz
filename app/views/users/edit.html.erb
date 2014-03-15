@@ -1,6 +1,6 @@
 <% content_for :header do %>
     <div>
-      <h3 style="text-align: center"><%= "Edit user parameters for #{@user.user_name}" %></h3>
+      <h3 style="text-align: center"><%= "Edit user parameters for #{@user.name}" %></h3>
       <% if @user.greeting != nil %>
           <p> <%=   @user.greeting %> </p>
       <% end %>
@@ -18,13 +18,13 @@
 <p><strong>CURRENTLY UNABLE TO MODIFY PASSWORD W/OUT GETTING LOGGED OUT</strong></p>
 <%= form_for(@user, :url => user_path(:method => :put)) do |f| %>
 
-    <!--div><%#= f.label :password %>
+    <div><%= f.label :password %>
       <br/>
-      <%#= f.password_field :password %></div>
+      <%= f.password_field :password %></div>
 
-    <div><%#= f.label :password_confirmation %>
+    <div><%= f.label :password_confirmation %>
       <br/>
-      <%#= f.password_field :password_confirmation %></div-->
+      <%= f.password_field :password_confirmation %></div>
 
     <div><%= f.label :user_name %>
       <br/>

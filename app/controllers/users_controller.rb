@@ -16,7 +16,7 @@ class UsersController < ApplicationController
                       password: params[:user][:password],
                       password_confirmation: params[:user][:password_confirmation],
                       user_name: params[:user][:user_name],
-                      greeting: params[:user][:greeting] )
+                      greeting: params[:user][:greeting])
 
         format.html { redirect_to users_index_path, notice: 'Wino was successfully created.' }
         format.json { render action: 'show', status: :created, location: user }
@@ -28,14 +28,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by_email( current_user.email )
+    @user = User.find_by_email(current_user.email)
     #@user.password = params[:user][:password]
     #@user.password_confirmation = params[:user][:password_confirmation]
-    @user.user_name = params[:user][:user_name]
-    @user.greeting = params[:user][:greeting]
-    respond_to  do |format|
-      if @user.save! != nil
-      #if @user.update_attributes!( user_params )
+    #@user.user_name = params[:user][:user_name]
+    #@user.greeting = params[:user][:greeting]
+    respond_to do |format|
+      #if @user.save! != nil
+      if @user.update_attributes!( user_params )
         format.html { redirect_to :root, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by_email( current_user.email )
+    @user = User.find_by_email(current_user.email)
   end
 
   def destroy
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
     @is_owner = user_id == current_user.id
     @title = "Cellar for #{User.find(user_id).name}"
     @greeting = User.find(user_id).greeting
-    @bottles = Bottle.where( "user_id = #{user_id}" )
+    @bottles = Bottle.where("user_id = #{user_id}")
   end
 
 
@@ -66,10 +66,11 @@ class UsersController < ApplicationController
 
   def signup_failed
     flash[:error] = "Creation Failed"
-    redirect_to users_index_path, notice: 'Wino creation failed'
+    redirect_to edit_user_path(current_user.id), notice: 'Wino creation failed'
   end
 
   def user_params
     params.require(:user).permit(:password, :password_confirmation, :greeting, :user_name)
   end
+
 end
