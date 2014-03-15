@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315142428) do
+ActiveRecord::Schema.define(version: 20140315150605) do
 
   create_table "bottles", force: true do |t|
     t.integer  "quantity"
@@ -48,6 +48,14 @@ ActiveRecord::Schema.define(version: 20140315142428) do
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "links", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "regions", force: true do |t|
     t.string   "name"

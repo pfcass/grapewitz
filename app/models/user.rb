@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable  #, :registerable
 
   has_many :bottles, dependent: :destroy
+  has_many :links, dependent: :destroy
 
   def admin?
     if /witz/ =~ self.email

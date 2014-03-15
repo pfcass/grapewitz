@@ -1,5 +1,7 @@
 Grapewitz::Application.routes.draw do
 
+  resources :links
+
   #keep this first to avoid redirect loop!
   devise_for :users
 

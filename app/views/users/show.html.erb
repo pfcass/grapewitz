@@ -17,6 +17,15 @@
       <% end %>
       <%= button_to 'ADD A BOTTLE', new_bottle_path, class: "button", method: :get %>
 
+      <% if @is_owner == true %>
+          <p>
+            <% current_user.links.each do |l| %>
+                <%= link_to l.name, l.url %>
+            <% end %>
+          </p>
+      <% end %>
+
+
     </div>
 <% end %>
 
