@@ -2,7 +2,7 @@
     <div>
       <h3 style="text-align: center"><%= @title %></h3>
 
-      <p><%= current_user.greeting %></p>
+      <p><%= @greeting %></p>
     </div>
 <% end %>
 
@@ -11,7 +11,7 @@
 <% content_for :left_sidebar do %>
     <div>
       <% if @is_owner == false %>
-          <%= button_to "MY CELLAR", user_path(current_user.id), class: "button", method: :get %>
+          <%= link_to "MY CELLAR", user_path(current_user.id) %>
       <% else %>
           <%= button_to 'EDIT MY ACCOUNT', edit_user_path, class: "button", method: :get %>
       <% end %>

@@ -9,7 +9,7 @@
 
 <% content_for :left_sidebar do %>
     <div>
-      <%= button_to "MY CELLAR", user_path(current_user.id), class: "button", method: :get %>
+      <%= link_to "MY CELLAR", user_path(current_user.id) %>
 
       <p>USERS WHO ALSO OWN</p> <strong><%=  @bottle.wine.wine_name %></strong><br>
       <div>

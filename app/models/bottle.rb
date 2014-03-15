@@ -31,12 +31,11 @@ class Bottle < ActiveRecord::Base
   def to_label
     str = "Got #{pluralize(self.quantity, 'bottle')} from #{self.store.name} "
     str += cost
-    str += " purchased on #{self.purchased_on} with rating of #{self.rating}."
   end
 
   def cost
     if self.price && self.list_price
-      "for #{number_to_currency(self.price)} (list )#{number_to_currency(self.list_price)}"
+      "for #{number_to_currency(self.price)} (list #{number_to_currency(self.list_price)})"
     elsif self.price
       "for #{number_to_currency(self.price)}"
     else

@@ -56,6 +56,7 @@ class UsersController < ApplicationController
     user_id = params[:id].to_i
     @is_owner = user_id == current_user.id
     @title = "Cellar for #{User.find(user_id).name}"
+    @greeting = User.find(user_id).greeting
     @bottles = Bottle.where( "user_id = #{user_id}" )
   end
 

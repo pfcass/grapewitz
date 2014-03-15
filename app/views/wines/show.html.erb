@@ -2,17 +2,19 @@
     <div>
       <h2><%= @wine.name %></h2>
 
-      <p>
-        <% if @comments.first.user_id != current_user.id %>
-            <%= @comments.first.user.email %> says:
-        <% end %>
+      <p>This wine was first added by:
+        <i><%= @comments.first.user.name %></i> who says: <br>
         <%= @comments.first.comment %>
       </p>
     </div>
 <% end %>
 
+<% content_for :left_sidebar do %>
+    <div>
+      <%= link_to "MY CELLAR", user_path(current_user.id) %>
+    </div>
+<% end %>
 
-<p id="notice"><%= notice %></p>
 
 <% if @comments != NIL && @comments.size > 1 %>
     <p>
@@ -31,7 +33,7 @@
     <% end %>
 <% end %>
 
-<%= form_for(@comment, {:url => comments_path({:wine_id => @wine.id}) }) do |f| %>
+<%= form_for(@comment, {:url => comments_path({:wine_id => @wine.id})}) do |f| %>
     <% if @comment.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -45,7 +47,8 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :comment %><br>
+      <%= f.label :comment %>
+      <br>
       <%= f.text_area :comment %>
     </div>
     <div class="actions">
@@ -58,28 +61,17 @@
 <table>
   <p>
     <strong>... and here are the bottles your friends have purchased</strong>
+    <p>click the link to see their cellar </p>
   </p>
 
-  <% @wine.bottles.each do |bottle| %>
-      <% if bottle.visible?(current_user.id) == true %>
-          <% if params[:show_all] == 'true' || current_user.id == bottle.user_id %>
-              <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-                <td class="list_description">
-                  <dl>
-                    <dd><%= bottle.to_label %></dd>
-                  </dl>
-                  <dl>
-                    <% if bottle.user_id != current_user.id %>
-                        <dd>
-                          <%= bottle.user.email %> says:
-                        </dd>
-                    <% end %>
-                    <%= strip_tags(bottle.comment) %>
-                  </dl>
-                </td>
-              </tr>
-          <% end %>
-      <% end %>
+  <% @bottles.each do |bottle| %>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td class="list_description">
+          <%= link_to bottle.user.name, user_path(bottle.user.id) %>
+          <dd><%= bottle.to_label %></dd>
+          <dd><i><%= "\"#{strip_tags(bottle.comment)}\"" %></i></dd>
+        </td>
+      </tr>
   <% end %>
 </table> <br/>
 
