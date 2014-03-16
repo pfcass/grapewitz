@@ -28,7 +28,7 @@ class LinksController < ApplicationController
     @link.user_id = current_user.id
     respond_to do |format|
       if @link.save
-        format.html { redirect_to @link, notice: 'Link was successfully created.' }
+        format.html { redirect_to user_path(current_user), notice: 'Link was successfully created.' }
         format.json { render action: 'show', status: :created, location: @link }
       else
         format.html { render action: 'new' }
@@ -56,7 +56,7 @@ class LinksController < ApplicationController
   def destroy
     @link.destroy
     respond_to do |format|
-      format.html { redirect_to links_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

@@ -13,18 +13,21 @@
       <% if @is_owner == false %>
           <%= link_to "MY CELLAR", user_path(current_user.id) %>
       <% else %>
+          <table>
+            <% current_user.links.order(:name).each do |l| %>
+                <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+                  <td class="list_description">
+                    <%= raw "<a href=\"#{l.url}\" target=\"_blank\">#{l.name}</a>" %></td>
+                  <td><%= link_to 'x', link_path(l), :method => :delete %>
+                  </td>
+                </tr>
+            <% end %>
+          </table>
+          <br>
+          <hr>
+          <%= button_to 'ADD A BOTTLE', new_bottle_path, class: "button", method: :get %>
           <%= button_to 'EDIT MY ACCOUNT', edit_user_path, class: "button", method: :get %>
       <% end %>
-      <%= button_to 'ADD A BOTTLE', new_bottle_path, class: "button", method: :get %>
-
-      <% if @is_owner == true %>
-          <p>
-            <% current_user.links.each do |l| %>
-                <%= link_to l.name, l.url %>
-            <% end %>
-          </p>
-      <% end %>
-
 
     </div>
 <% end %>

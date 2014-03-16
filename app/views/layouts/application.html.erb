@@ -25,12 +25,13 @@
 
   <div id="menu">
     <% if current_user != NIL %>
+        <strong>You are logged in as</strong>
         <p><%= current_user.email %></p>
         <p class="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete %>
         <%= link_to "Home", :root %>
         <%= link_to 'Back', :back %></p>
-
-        <strong>MY LINKS:</strong>
+        <hr>
+        <p><strong>My Links</strong></p>
 
     <% end %>
 
