@@ -41,6 +41,7 @@
 
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td class="list_description" style="width:40%">
+          <%= image_tag( bottle.wine.variety.icon, size: "25x25") %>
           <% if @is_owner == true %>
               <%= link_to "#{bottle.purchased_on} - #{ pluralize(bottle.quantity, "bottle") }",
                           edit_bottle_path(bottle.id) %>

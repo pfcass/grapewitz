@@ -1,7 +1,5 @@
 Grapewitz::Application.routes.draw do
 
-  resources :links
-
   #keep this first to avoid redirect loop!
   devise_for :users
 
@@ -20,6 +18,8 @@ Grapewitz::Application.routes.draw do
   resources :brands
 
   resources :comments, only: [ :create, :edit, :update ]
+
+  resources :links, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
