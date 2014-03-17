@@ -61,7 +61,7 @@ class BottlesController < ApplicationController
   def update
     respond_to do |format|
       if @bottle.update(bottle_params)
-        format.html { redirect_to users_show_path({:id =>current_user.id}), notice: 'Bottle was successfully updated.' }
+        format.html { redirect_to redirect_to user_path(current_user.id ), notice: 'Bottle was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
