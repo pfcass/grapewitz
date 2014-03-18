@@ -10,6 +10,9 @@ User.create!(:email => "admin@grapewitz.com", :password => "password")
 
 Region.create!(:name => 'Unknown')
 
+Brand.create(:name => 'Home Brew')
+Store.create(:name => 'The Web')
+
 Variety.create(:name => 'Burgundy', :color => 1, :fizz => 0)
 Variety.create(:name => 'Bordeaux', :color => 1, :fizz => 0)
 Variety.create(:name => 'Chardonnay', :color => 0, :fizz => 0)
@@ -21,3 +24,5 @@ Variety.create(:name => 'Cote du Rhone', :color => 1, :fizz => 0)
 Variety.create(:name => 'Montepulciano', :color => 1, :fizz => 0)
 Variety.create(:name => 'Chianti', :color => 1, :fizz => 0)
 Variety.create(:name => 'Sauvignon Blanc', :color => 0, :fizz => 0)
+Variety.create(:name => 'Shiraz', :color => 1, :fizz => 0)
+Variety.create(:name => 'Prosecco', :color => 0, :fizz => 1)

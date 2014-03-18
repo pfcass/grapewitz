@@ -30,6 +30,7 @@
         <p class="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete %>
         <%= link_to "Home", :root %>
         <%= link_to 'Back', :back %></p>
+        <%= button_to "Wine List", wines_path, :class => 'button', :method => :get %>
         <hr>
         <p><strong>My Links</strong></p>
 
