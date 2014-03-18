@@ -47,3 +47,5 @@ end
 gem 'acts_as_commentable'
 
 gem 'devise'
+
+gem 'rails_12factor', group: :production
