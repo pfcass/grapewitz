@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: db/development
+  database: dev
   pool: 5
   password:
 
@@ -16,13 +16,13 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: db/test
+  database: test
   pool: 5
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: db/production
+  database: production
   pool: 5
   password:
