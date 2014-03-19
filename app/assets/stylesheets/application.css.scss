@@ -16,12 +16,12 @@
 
 #container {
   width: 100%;
-  background-color: $background-color;
+  background-color: rgba(159, 39, 101, 0.35);
 }
 
 #header {
   padding: 20px;
-  background-color: rgba(159, 39, 101, 0.55);
+  background-color: rgba(159, 39, 101, 0.35);
   h1 {
     text-align: center;
   }
@@ -34,13 +34,15 @@
 }
 
 #menu {
-  background-color: rgba(159, 39, 101, 0.55);
+  background-color: rgba(159, 39, 101, 0.35);
   padding: 20px;
   width: 15%;
   float: left;
 }
 
 #content {
+  padding: 5px;
+  padding-top: 20px;
   background-color: #eff0dd;
 
   width: 80%;
