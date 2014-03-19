@@ -14,7 +14,11 @@ class WinesController < ApplicationController
   # GET /wines/1.json
   def show
     @comment = Comment.new
-    @bottles = Bottle.where("wine_id == ? AND user_id != ?", @wine.id, current_user.id )
+    if Bottle.count == 0
+      @bottles = []
+    else
+      @bottles = Bottle.where( "wine_id == ? AND user_id != ?", @wine.id, current_user.id )
+    end
   end
 
   # GET /wines/new

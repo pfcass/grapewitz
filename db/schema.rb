@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140315150605) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "bottles", force: true do |t|
     t.integer  "quantity"
     t.decimal  "price"
@@ -31,8 +28,8 @@ ActiveRecord::Schema.define(version: 20140315150605) do
     t.integer  "visibility"
   end
 
-  add_index "bottles", ["store_id"], name: "index_bottles_on_store_id", using: :btree
-  add_index "bottles", ["wine_id"], name: "index_bottles_on_wine_id", using: :btree
+  add_index "bottles", ["store_id"], name: "index_bottles_on_store_id"
+  add_index "bottles", ["wine_id"], name: "index_bottles_on_wine_id"
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -51,9 +48,9 @@ ActiveRecord::Schema.define(version: 20140315150605) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
-  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "links", force: true do |t|
     t.string   "name"
@@ -93,8 +90,8 @@ ActiveRecord::Schema.define(version: 20140315150605) do
     t.string   "user_name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "varieties", force: true do |t|
     t.string   "name"
@@ -112,6 +109,6 @@ ActiveRecord::Schema.define(version: 20140315150605) do
     t.integer  "region_id"
   end
 
-  add_index "wines", ["brand_id", "variety_id"], name: "by_brand_and_variety", unique: true, using: :btree
+  add_index "wines", ["brand_id", "variety_id"], name: "by_brand_and_variety", unique: true
 
 end

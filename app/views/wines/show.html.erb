@@ -66,6 +66,7 @@
 
   <% @bottles.each do |bottle| %>
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <%= image_tag( bottle.wine.variety.icon, size: "25x25") %>
         <td class="list_description">
           <%= link_to bottle.user.name, user_path(bottle.user.id) %>
           <dd><%= bottle.to_label %></dd>
