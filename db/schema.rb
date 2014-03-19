@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 20140315150605) do
     t.integer  "visibility"
   end
 
+  add_index "bottles", ["store_id"], name: "index_bottles_on_store_id"
+  add_index "bottles", ["wine_id"], name: "index_bottles_on_wine_id"
+
   create_table "brands", force: true do |t|
     t.string   "name"
     t.datetime "created_at"

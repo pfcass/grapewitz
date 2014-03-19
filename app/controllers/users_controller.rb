@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     #@user.greeting = params[:user][:greeting]
     respond_to do |format|
       #if @user.save! != nil
-      if @user.update_attributes!( user_params )
+      if @user.update_attributes!(user_params)
         format.html { redirect_to :root, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -53,13 +53,15 @@ class UsersController < ApplicationController
   end
 
   def show
-      user_id = params[:id].to_i
+    user_id = params[:id].to_i
     @is_owner = user_id == current_user.id
     @title = "Cellar for #{User.find(user_id).name}"
+    if Bottle.count == 0
+      @title += ", but sadly your cellar is empty"
+    end
     @greeting = User.find(user_id).greeting
     @bottles = Bottle.where("user_id = #{user_id}")
   end
-
 
 
   private

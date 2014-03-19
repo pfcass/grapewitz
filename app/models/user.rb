@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    if self.user_name.empty?
+    if self.user_name == nil || self.user_name == ""
       self.email
     else
       self.user_name
