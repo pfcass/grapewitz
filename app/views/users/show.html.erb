@@ -3,6 +3,14 @@
       <h3 style="text-align: center"><%= @title %></h3>
 
       <p><%= @greeting %></p>
+
+      <p>... and here are some happy facts:</p>
+      <ul>
+        <li><%= "You have purchaed a #{pluralize(@n_bottles, "bottle")} of this wine"%></li>
+        <li><%= "You paid $#{@total_paid_price}"%></li>
+        <li><%= "Total list was $#{@total_list_price}"%></li>
+        <li><%= "For a saving of $#{@total_saved}"%></li>
+      </ul>
     </div>
 <% end %>
 
