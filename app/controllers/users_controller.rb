@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.user_name = "new"
   end
 
   def create
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
                       user_name: params[:user][:user_name],
                       greeting: params[:user][:greeting])
 
-        format.html { redirect_to users_index_path, notice: 'Wino was successfully created.' }
+        format.html { redirect_to users_path, notice: 'Wino was successfully created.' }
         format.json { render action: 'show', status: :created, location: user }
       else
         format.html { render action: 'new' }
