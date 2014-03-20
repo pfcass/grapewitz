@@ -28,7 +28,7 @@ class VarietiesController < ApplicationController
 
     respond_to do |format|
       if @variety.save
-        format.html { redirect_to @variety, notice: 'Variety was successfully created.' }
+        format.html { redirect_to new_wine_path, notice: 'Variety was successfully created.' }
         format.json { render action: 'show', status: :created, location: @variety }
       else
         format.html { render action: 'new' }

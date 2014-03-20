@@ -74,10 +74,10 @@ class Bottle < ActiveRecord::Base
 
   def self.visible_bottles(cur_user, wine_id=nil)
     if wine_id == nil
-      @bottles = Bottle.where("visibility != 0 OR (visibility == 0 AND user_id == ?)", cur_user)
+      @bottles = Bottle.where("visibility != 0 OR (visibility = 0 AND user_id = ?)", cur_user)
     else
-      @bottles = Bottle.where("wine_id == ? AND
-          (visibility != 0 OR (visibility == 0 AND user_id == ?))", wine_id, cur_user)
+      @bottles = Bottle.where("wine_id = ? AND
+          (visibility != 0 OR (visibility = 0 AND user_id = ?))", wine_id, cur_user)
     end
   end
 
