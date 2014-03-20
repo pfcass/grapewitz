@@ -7,18 +7,14 @@ class WinesController < ApplicationController
   # GET /wines.json
   def index
     @users = User.where("id != ?", current_user.id).order(:email)
-    @wines = Wine.order(:variety_id,:brand_id)
+    @wines = Wine.order(:variety_id, :brand_id)
   end
 
   # GET /wines/1
   # GET /wines/1.json
   def show
     @comment = Comment.new
-    if Bottle.count == 0
-      @bottles = []
-    else
-      @bottles = Bottle.where( "wine_id == ? AND user_id != ?", @wine.id, current_user.id )
-    end
+    @bottles = Bottle.where("wine_id = ? AND user_id != ?", @wine.id, current_user.id)
   end
 
   # GET /wines/new
@@ -81,16 +77,16 @@ class WinesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_wine
-      @wine = Wine.find(params[:id])
-      @comments = @wine.comments
+  # Use callbacks to share common setup or constraints between actions.
+  def set_wine
+    @wine = Wine.find(params[:id])
+    @comments = @wine.comments
 
-    end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def wine_params
-      # ?? pfcass: why don't I need :note here ??
-      params.require(:wine).permit(:brand_id, :variety_id, :region_id, :color, :fizz )
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def wine_params
+    # ?? pfcass: why don't I need :note here ??
+    params.require(:wine).permit(:brand_id, :variety_id, :region_id, :color, :fizz)
+  end
 end

@@ -4,7 +4,7 @@
 
       <p>This wine was first added by:
         <i><%= @comments.first.user.name %></i> who says: <br>
-        <%= @comments.first.comment %>
+        <p><%= @comments.first.comment %></p>
       </p>
     </div>
 <% end %>
@@ -47,7 +47,7 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :comment %>
+      <%= f.label "If you have some thoughts about this wine, add them here" %>
       <br>
       <%= f.text_area :comment %>
     </div>
