@@ -19,24 +19,30 @@
     <% if alert != nil %>
         <p class="alert"><%= alert %></p>
     <% end %>
+    <table>
+      <tr>
+        <td width="20%"> <%= image_tag("grapes.jpg", size: "180x180") %></td>
 
-    <%= yield :header %>
+        <td width="80%"><%= yield :header %></td>
+      </tr>
+    </table>
   </div>
-
   <div id="menu">
     <% if current_user != NIL %>
         <strong>You are logged in as</strong>
+
         <p><%= current_user.email %></p>
+
         <p class="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <%= link_to "Home", :root %>
-        <%= link_to 'Back', :back %></p>
+          <%= link_to "Home", :root %>
+          <%= link_to 'Back', :back %></p>
         <%= button_to "Wine List", wines_path, :class => 'button', :method => :get %>
         <hr>
         <p><strong>My Links</strong></p>
 
     <% end %>
 
-    <%= yield :left_sidebar%>
+    <%= yield :left_sidebar %>
   </div>
 
   <div id="content">
