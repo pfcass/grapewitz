@@ -8,9 +8,7 @@
 </head>
 <body class='<%= controller.controller_name %>'>
 
-
 <div id="container">
-
   <div id="header">
     <% if notice != nil %>
         <p class="notice"><%= notice %></p>
@@ -19,13 +17,14 @@
     <% if alert != nil %>
         <p class="alert"><%= alert %></p>
     <% end %>
-    <table>
-      <tr>
-        <td width="20%"> <%= image_tag("grapes.jpg", size: "180x180") %></td>
-
-        <td width="80%"><%= yield :header %></td>
-      </tr>
-    </table>
+    <% if current_user != nil %>
+        <table>
+          <tr>
+            <td width="20%"><%= image_tag("grapes.jpg", size: "180x180") %></td>
+            <td width="80%"><%= yield :header %></td>
+          </tr>
+        </table>
+    <% end %>
   </div>
   <div id="menu">
     <% if current_user != NIL %>
@@ -55,7 +54,6 @@
   </div>
 
 </div>
-
 
 </body>
 </html>
