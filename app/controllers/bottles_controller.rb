@@ -89,6 +89,6 @@ class BottlesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def bottle_params
       params.require(:bottle).permit(:quantity, :price, :list_price, :rating,
-                                     :comment, :wine_id, :store_id, :visibility)
+                                     :comment, :wine_id, :store_id, :visibility, :purchased_on)
     end
 end

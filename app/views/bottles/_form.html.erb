@@ -20,7 +20,7 @@
       <%= f.label :quantity %><br>
       <%= f.number_field :quantity %>
       <%= f.label :purchased_on %>
-      <%= select_date Date.today, prefix: :start_date %>
+      <%= f.date_select :purchased_on %>
     </div>
     <div class="field">
       <%= f.label :store_id %><br>
