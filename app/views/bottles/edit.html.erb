@@ -1,9 +1,9 @@
 <% content_for :header do %>
     <div>
       <h2>View or Modify A Purchase</h2>
-      <h3 style="text-align: center"><%= "Details of #{@bottle.wine.wine_name} purchase on #{@bottle.purchased_on}"%></h3>
+      <h3 style="text-align: center"><%= "Details of #{@bottle.wine.wine_name} purchase on #{@bottle.purchased_on}" %></h3>
 
-      <p>You can user this screen to view the details of your purchase.</p>
+      <p>You can use this screen to view the details of your purchase.</p>
     </div>
 <% end %>
 
@@ -11,15 +11,21 @@
     <div>
       <%= link_to "MY CELLAR", user_path(current_user.id) %>
 
-      <p>USERS WHO ALSO OWN</p> <strong><%=  @bottle.wine.wine_name %></strong><br>
-      <div>
-        <% @users.each do |u| %>
-            <%= link_to u.email, user_path(u.id) %>
-        <% end %>
-      </div>
+      <% if @users.count > 0 %>
+          <hr>
+          <p>USERS WHO ALSO OWN</p> <strong><%= @bottle.wine.wine_name %></strong><br>
+
+          <div>
+            <% @users.each do |u| %>
+                <%= link_to u.email, user_path(u.id) %>
+            <% end %>
+          </div>
+      <% end %>
     </div>
 <% end %>
 
-
+<%= button_to("Delete This Bottle", bottle_path, :class => 'button',
+              :method => :delete, data: {confirm: 'Are you sure?'}) %>
+<hr>
 <%= render 'form' %>
 

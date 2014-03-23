@@ -41,7 +41,7 @@
             <td><%= bottle.price %> / <%= bottle.list_price %></td>
             <td><%= bottle.comment %></td>
             <td><%= bottle.store.name %></td>
-            <td><%= bottle.user.name %></td>
+            <td><%= link_to bottle.user.name, user_path( bottle.user.id )%></td>
           </tr>
   <% end %>
   </tbody>

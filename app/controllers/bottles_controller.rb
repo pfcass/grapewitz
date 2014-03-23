@@ -75,7 +75,7 @@ class BottlesController < ApplicationController
   def destroy
     @bottle.destroy
     respond_to do |format|
-      format.html { redirect_to bottles_url }
+      format.html { redirect_to user_path(current_user.id ), notice: 'Bottle was successfully updated.' }
       format.json { head :no_content }
     end
   end
