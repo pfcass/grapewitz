@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.user_name = "new"
+    @user.user_name
   end
 
   def create
@@ -30,20 +30,30 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by_email(current_user.email)
-    #@user.password = params[:user][:password]
-    #@user.password_confirmation = params[:user][:password_confirmation]
-    #@user.user_name = params[:user][:user_name]
-    #@user.greeting = params[:user][:greeting]
-    respond_to do |format|
-      #if @user.save! != nil
-      if @user.update_attributes!(user_params)
-        format.html { redirect_to :root, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+
+    if user_params[:password] == "" && user_params[:password_confirmation] == ""
+      respond_to do |format|
+        if @user.update_attribute(:user_name, user_params[:user_name]) &&
+            @user.update_attribute(:greeting, user_params[:greeting])
+          format.html { redirect_to user_path @user, notice: 'User was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        if @user.update_attributes!(user_params)
+          format.html { redirect_to user_path @user, notice: 'User was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
     end
+
   end
 
   def edit
