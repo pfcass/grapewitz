@@ -5,7 +5,7 @@ Grapewitz::Application.routes.draw do
 
   resources :regions
 
-  resources :users
+  resources :users, only: [ :show, :index ]
 
   resources :bottles
 
