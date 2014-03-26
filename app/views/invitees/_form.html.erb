@@ -1,21 +1,14 @@
-<%= form_for(@invitee) do |f| %>
-  <% if @invitee.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@invitee.errors.count, "error") %> prohibited this invitee from being saved:</h2>
-
-      <ul>
-      <% @invitee.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @invitee, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                invitees_path, :class => 'btn' %>
   </div>
 <% end %>
