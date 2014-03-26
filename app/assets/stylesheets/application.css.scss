@@ -1,0 +1,119 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+/* pfcass: is this the right way to drag in variables? */
+@import 'scaffolds';
+
+#container {
+  width: 100%;
+  background-color: ivory;
+}
+
+#header {
+
+  padding: 20px;
+  background-color: rgba(159, 39, 101, 0.35);
+  h1 {
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+  }
+  h3 {
+    font-style: italic;
+  }
+}
+
+#menu {
+  background-color: rgba(159, 39, 101, 0.35);
+  padding: 20px;
+  width: 15%;
+  float: left;
+}
+
+#content {
+
+  padding: 5px;
+  padding-top: 20px;
+  background-color: #eff0dd;
+
+  width: 80%;
+  float: left;
+  h3 {
+    text-align: center;
+  }
+}
+
+#footer {
+  padding: 5px;
+  width: 100%;
+  background-color: $background-color;
+}
+
+
+.list_line_even {
+  background: rgba(245, 248, 167, 0.70);
+}
+
+.list_line_odd {
+  background: rgba(227, 221, 149, 0.75);
+}
+table {
+  border-collapse: collapse;
+}
+
+table tr td {
+  padding: 10px;
+  vertical-align: top;
+}
+
+textarea {
+  width: 500px;
+  height: 100px;
+}
+/*
+
+.variety_name {
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+
+.list_image {
+  width: 60px;
+  height: 70px;
+}
+
+.list_description {
+  width: 60%;
+
+  dl {
+    margin: 0;
+  }
+
+  dt {
+    color: #844;
+    font-weight: bold;
+    font-size: larger;
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.list_actions {
+  font-size: x-small;
+  text-align: right;
+  padding-left: 1em;
+}
+*/

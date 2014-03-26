@@ -2,16 +2,12 @@
 <html>
 <head>
   <title>Grapewitz</title>
-  <!--[if lt IE 9]>
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-  <![endif]-->
-  <%= stylesheet_link_tag "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body class='<%= controller.controller_name %>'>
+
 <div id="container">
   <div id="header">
     <% if notice != nil %>
@@ -30,31 +26,28 @@
         </table>
     <% end %>
   </div>
+  <div id="menu">
+    <% if current_user != NIL %>
+        <strong>You are logged in as</strong>
 
-  <div class="row">
-    <div class="span3">
-      <% if current_user != NIL %>
-          <strong>You are logged in as</strong>
+        <p><%= current_user.email %></p>
 
-          <p><%= current_user.email %></p>
+        <p class="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          <%= link_to "Home", :root %>
+          <%= link_to 'Back', :back %></p>
+        <%= button_to "Wine List", wines_path, :class => 'button', :method => :get %>
+        <hr>
+        <p><strong>My Links</strong></p>
 
-          <p class="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete %>
-            <%= link_to "Home", :root %>
-            <%= link_to 'Back', :back %></p>
-          <%= button_to "Wine List", wines_path, :class => 'button', :method => :get %>
-          <hr>
-          <p><strong>My Links</strong></p>
+    <% end %>
 
-      <% end %>
-
-      <%= yield :left_sidebar %>
-    </div>
-
-    <div class="span9">
-      <%= yield %>
-    </div>
-
+    <%= yield :left_sidebar %>
   </div>
+
+  <div id="content">
+    <%= yield %>
+  </div>
+
   <div id="footer">
     <%= yield :footer %>
     Copyright © Casswitz Enterprises
