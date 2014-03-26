@@ -1,11 +1,13 @@
 Grapewitz::Application.routes.draw do
 
+  resources :invitees
+
   #keep this first to avoid redirect loop!
   devise_for :users
 
   resources :regions
 
-  resources :users, only: [ :show, :index ]
+  resources :users, only: [ :show ]
 
   resources :bottles
 

@@ -7,13 +7,14 @@ class User < ActiveRecord::Base
   has_many :bottles, dependent: :destroy
   has_many :links, dependent: :destroy
 
-  def admin?
-    if /witz/ =~ self.email
-      true
-    else
-      false
+  validate :is_invited
+
+  def is_invited
+    if Invitee.where( "email = ?", self.email ).empty? == true
+      errors.add( :sorry, "not accepting members")
     end
   end
+
 
   def name
     if self.user_name == nil || self.user_name == ""

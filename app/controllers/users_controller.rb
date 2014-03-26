@@ -1,10 +1,4 @@
 class UsersController < ApplicationController
-  rescue_from ActiveRecord::RecordInvalid, with: :signup_failed
-
-
-  def index
-    @users = User.all
-  end
 
 
   def show
@@ -44,12 +38,5 @@ class UsersController < ApplicationController
       @n_bottles += b.quantity
     end
   end
-
-
-  private
-
-#  def user_params
-#    params.require(:user).permit(:password, :password_confirmation, :greeting, :user_name)
-#  end
 
 end

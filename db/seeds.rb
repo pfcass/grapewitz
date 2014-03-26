@@ -7,7 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create!(:email => "grapewitz@gmail.com", :password => "Wine4all")
-
+Invitee.create!([
+                    {:email => 'pfcass@casswitz.com'},
+                    {:email => 'grapewitz@gmail.com'},
+                    {:email => 'artgrrl04@yahoo.com'},
+                    {:email => 'casswitz@comcast.net'},
+                    {:email => 'catwitz@yahoo.com'}
+                ])
 Region.create!(:name => 'Unknown')
 Region.create!(:name => 'France')
 Region.create!(:name => 'Italy')
