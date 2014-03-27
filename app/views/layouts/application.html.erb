@@ -33,6 +33,7 @@
 
   <div class="row">
     <div class="span3">
+      <div id="menu">
       <% if current_user != NIL %>
           <strong>You are logged in as</strong>
 
@@ -48,6 +49,7 @@
       <% end %>
 
       <%= yield :left_sidebar %>
+      </div>
     </div>
 
     <div class="span9">
