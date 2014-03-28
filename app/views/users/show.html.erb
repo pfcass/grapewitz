@@ -22,7 +22,9 @@
       <% if @is_owner == false %>
           <%= link_to "MY CELLAR", user_path(current_user.id) %>
       <% else %>
-          <table>
+          MY LINKS
+          <table class="table table-striped">
+            <tbody>
             <% current_user.links.order(:name).each do |l| %>
                 <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
                   <td class="list_description">
@@ -31,12 +33,12 @@
                   </td>
                 </tr>
             <% end %>
+            </tbody>
           </table>
           <br>
           <hr>
           <%= button_to 'ADD A BOTTLE', new_bottle_path, class: "button", method: :get %>
           <%= button_to "UPDATE MY ACCOUNT", edit_user_registration_path, class: "button", method: :get %>
-          <%= button_to "INVITE A FRIEND", new_invitee_path, class: "button", method: :get %>
       <% end %>
 
     </div>
@@ -61,12 +63,12 @@
 
       <tr>
         <td><%= image_tag(bottle.wine.variety.icon, size: "25x25") %></td>
-        <td><%= bottle.purchased_on%></td>
+        <td><%= bottle.purchased_on %></td>
         <td>
           <% if @is_owner == true %>
               <%= link_to "#{ pluralize(bottle.quantity, "bottle") }", edit_bottle_path(bottle.id) %>
           <% else %>
-              <%= link_to "#{ pluralize(bottle.quantity, "bottle") }",bottle_path(bottle.id) %>
+              <%= link_to "#{ pluralize(bottle.quantity, "bottle") }", bottle_path(bottle.id) %>
           <% end %>
         </td>
         <td>

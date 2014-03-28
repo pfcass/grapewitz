@@ -23,6 +23,14 @@
                 <%= menu_item u.name, user_path(u) %>
             <% end %>
         <% end %>
+
+        <%= drop_down "My Links" do %>
+            <% current_user.links.order(:name).each do |l| %>
+                <%= menu_item( raw "<a href=\"#{l.url}\" target=\"_blank\">#{l.name}</a>" ) %>
+            <% end %>
+        <% end %>
+
+
         <%= menu_divider %>
         <%= drop_down "New..." do %>
             <%= menu_item "Wine", new_wine_path %>
@@ -32,9 +40,9 @@
             <%= menu_item "Region", new_region_path %>
             <%= menu_item "Store", new_store_path %>
         <% end %>
-        <%= menu_item "Invite A Friend", new_invitee_path %>
     <% end %>
     <%= menu_group :pull => :right do %>
+        <%= menu_item "Invite A Friend", new_invitee_path %>
         <%= menu_item "Log Out", destroy_user_session_path %>
     <% end %>
 <% end %>
@@ -43,7 +51,7 @@
   <div class="row">
     <div class="span3">
       <td>
-        <%= image_tag "grapes.jpg", {:size=>"150x150", :style=>"padding: 10px;"} %>
+        <%= image_tag "grapes.jpg", {:size => "150x150", :style => "padding: 10px;"} %>
       </td>
     </div>
     <div class="span9">
@@ -71,12 +79,8 @@
 
             <p><%= current_user.email %></p>
 
-            <p class="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete %>
-              <%= link_to "Home", :root %>
-              <%= link_to 'Back', :back %></p>
-            <%= button_to "Wine List", wines_path, :class => 'button', :method => :get %>
+            <%= link_to 'Back', :back %></p>
             <hr>
-            <p><strong>My Links</strong></p>
 
         <% end %>
 
