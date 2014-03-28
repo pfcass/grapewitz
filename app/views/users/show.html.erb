@@ -5,13 +5,6 @@
 
       <p><%= @greeting %></p>
 
-      <p>... and here are some happy facts:</p>
-      <ul>
-        <li><%= "You have purchased #{pluralize(@n_bottles, "bottle")} of wine" %></li>
-        <li><%= "You paid $#{@total_paid_price}" %></li>
-        <li><%= "Total list was $#{@total_list_price}" %></li>
-        <li><%= "For a saving of $#{@total_saved}" %></li>
-      </ul>
     </div>
 <% end %>
 
@@ -19,27 +12,17 @@
 
 <% content_for :left_sidebar do %>
     <div>
-      <% if @is_owner == false %>
-          <%= link_to "MY CELLAR", user_path(current_user.id) %>
-      <% else %>
-          MY LINKS
-          <table class="table table-striped">
-            <tbody>
-            <% current_user.links.order(:name).each do |l| %>
-                <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-                  <td class="list_description">
-                    <%= raw "<a href=\"#{l.url}\" target=\"_blank\">#{l.name}</a>" %></td>
-                  <td><%= link_to 'x', link_path(l), :method => :delete %>
-                  </td>
-                </tr>
-            <% end %>
-            </tbody>
-          </table>
-          <br>
-          <hr>
-          <%= button_to 'ADD A BOTTLE', new_bottle_path, class: "button", method: :get %>
-          <%= button_to "UPDATE MY ACCOUNT", edit_user_registration_path, class: "button", method: :get %>
-      <% end %>
+      <p>... and here are some happy facts:</p>
+      <ul>
+        <li><%= "You have purchased #{pluralize(@n_bottles, "bottle")} of wine" %></li>
+        <li><%= "You paid $#{@total_paid_price}" %></li>
+        <li><%= "Total list was $#{@total_list_price}" %></li>
+        <li><%= "For a saving of $#{@total_saved}" %></li>
+      </ul>
+
+      <hr>
+      <%= button_to 'ADD A BOTTLE', new_bottle_path, class: "button", method: :get %>
+      <%= button_to "UPDATE MY ACCOUNT", edit_user_registration_path, class: "button", method: :get %>
 
     </div>
 <% end %>
