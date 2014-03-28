@@ -33,29 +33,34 @@
             <%= menu_item "Store", new_store_path %>
         <% end %>
         <%= menu_item "Invite A Friend", new_invitee_path %>
-<% end %>
+    <% end %>
     <%= menu_group :pull => :right do %>
         <%= menu_item "Log Out", destroy_user_session_path %>
     <% end %>
 <% end %>
 
 <div id="container">
-  <div id="header">
-    <% if notice != nil %>
-        <p class="notice"><%= notice %></p>
-    <% end %>
+  <div class="row">
+    <div class="span3">
+      <td>
+        <%= image_tag "grapes.jpg", {:size=>"150x150", :style=>"padding: 10px;"} %>
+      </td>
+    </div>
+    <div class="span9">
+      <div id="header">
+        <% if current_user != nil %>
+            <% if notice != nil %>
+                <p class="notice"><%= notice %></p>
+            <% end %>
 
-    <% if alert != nil %>
-        <p class="alert"><%= alert %></p>
-    <% end %>
-    <% if current_user != nil %>
-        <table>
-          <tr>
-            <td width="20%"><%= image_tag("grapes.jpg", size: "180x180") %></td>
-            <td width="80%"><%= yield :header %></td>
-          </tr>
-        </table>
-    <% end %>
+            <% if alert != nil %>
+                <p class="alert"><%= alert %></p>
+            <% end %>
+
+            <%= yield :header %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <div class="row">
