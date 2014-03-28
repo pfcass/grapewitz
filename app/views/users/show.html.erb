@@ -49,6 +49,7 @@
   <thead>
   <tr>
     <th><%= model_class.human_attribute_name(:style) %></th>
+    <th><%= model_class.human_attribute_name(:date) %></th>
     <th><%= model_class.human_attribute_name(:bottles) %></th>
     <th><%= model_class.human_attribute_name(:wine) %></th>
     <th><%= model_class.human_attribute_name(:comment) %></th>
@@ -60,19 +61,18 @@
 
       <tr>
         <td><%= image_tag(bottle.wine.variety.icon, size: "25x25") %></td>
+        <td><%= bottle.purchased_on%></td>
         <td>
           <% if @is_owner == true %>
-              <%= link_to "#{bottle.purchased_on} - #{ pluralize(bottle.quantity, "bottle") }",
-                          edit_bottle_path(bottle.id) %>
+              <%= link_to "#{ pluralize(bottle.quantity, "bottle") }", edit_bottle_path(bottle.id) %>
           <% else %>
-              <%= link_to "#{bottle.purchased_on} - #{ pluralize(bottle.quantity, "bottle") }",
-                          bottle_path(bottle.id) %>
+              <%= link_to "#{ pluralize(bottle.quantity, "bottle") }",bottle_path(bottle.id) %>
           <% end %>
         </td>
         <td>
           <%= link_to "#{bottle.wine.wine_name}", bottles_path(:wine_id => bottle.wine.id) %>
         </td>
-        <td style="width:60%">
+        <td>
           <% if bottle.comment %>
               <i><%= truncate(bottle.comment, length: 80, separator: ' ') %></i>
           <% end %>
