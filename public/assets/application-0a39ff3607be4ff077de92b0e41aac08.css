@@ -4817,6 +4817,9 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+body {
+  padding-top: 60px;
+}
 /*!
  * Bootstrap Responsive v2.3.2
  *
@@ -5907,8 +5910,8 @@ a.badge:focus {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url(/assets/fontawesome-webfont-9191785c21225c4107a2e4cb2efc01fc.eot);
-  src: url(/assets/fontawesome-webfont-9191785c21225c4107a2e4cb2efc01fc.eot?#iefix) format('embedded-opentype'), url(/assets/fontawesome-webfont-7106daba96a27f3af06d179d65dba7b2.woff) format('woff'), url(/assets/fontawesome-webfont-5b9fb9036fc4d520035145e9ad2c8572.ttf) format('truetype'), url(/assets/fontawesome-webfont-ee58ed7ec22b072487557ff3fcbf4653.svg#fontawesomeregular) format('svg');
+  src: url(/assets/fontawesome-webfont.eot);
+  src: url(/assets/fontawesome-webfont.eot?#iefix) format('embedded-opentype'), url(/assets/fontawesome-webfont.woff) format('woff'), url(/assets/fontawesome-webfont.ttf) format('truetype'), url(/assets/fontawesome-webfont.svg#fontawesomeregular) format('svg');
   font-weight: normal;
   font-style: normal;
 }
