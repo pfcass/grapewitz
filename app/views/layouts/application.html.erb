@@ -1,53 +1,98 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Grapewitz</title>
-  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body class='<%= controller.controller_name %>'>
 
+<%= nav_bar :fixed => :top, :brand => "GrapeWitz", :responsive => true do %>
+    <%= menu_group do %>
+        <%= menu_item "View Wines", root_path %>
+        <%= menu_item "My Cellar", user_path(current_user) %>
+        <%= drop_down "My Friends' Cellars" do %>
+            <% User.where('id != ?', current_user.id).each do |u| %>
+                <%= menu_item u.name, user_path(u) %>
+            <% end %>
+        <% end %>
+
+        <%= drop_down "My Links" do %>
+            <% current_user.links.order(:name).each do |l| %>
+                <%= menu_item( raw "<a href=\"#{l.url}\" target=\"_blank\">#{l.name}</a>" ) %>
+            <% end %>
+        <% end %>
+
+
+        <%= menu_divider %>
+        <%= drop_down "New..." do %>
+            <%= menu_item "Wine", new_wine_path %>
+            <%= menu_item "---" %>
+            <%= menu_item "Brand", new_brand_path %>
+            <%= menu_item "Variety", new_variety_path %>
+            <%= menu_item "Region", new_region_path %>
+            <%= menu_item "Store", new_store_path %>
+        <% end %>
+    <% end %>
+    <%= menu_group :pull => :right do %>
+        <%= menu_item "Invite A Friend", new_invitee_path %>
+        <%= menu_item "Log Out", destroy_user_session_path %>
+    <% end %>
+<% end %>
+
 <div id="container">
-  <div id="header">
-    <% if notice != nil %>
-        <p class="notice"><%= notice %></p>
-    <% end %>
+  <div class="row">
+    <div class="span3">
+      <td>
+        <%= image_tag "grapes.jpg", {:size => "150x150", :style => "padding: 10px;"} %>
+      </td>
+    </div>
+    <div class="span9">
+      <div id="header">
+        <% if current_user != nil %>
+            <% if notice != nil %>
+                <p class="notice"><%= notice %></p>
+            <% end %>
 
-    <% if alert != nil %>
-        <p class="alert"><%= alert %></p>
-    <% end %>
-    <% if current_user != nil %>
-        <table>
-          <tr>
-            <td width="20%"><%= image_tag("grapes.jpg", size: "180x180") %></td>
-            <td width="80%"><%= yield :header %></td>
-          </tr>
-        </table>
-    <% end %>
-  </div>
-  <div id="menu">
-    <% if current_user != NIL %>
-        <strong>You are logged in as</strong>
+            <% if alert != nil %>
+                <p class="alert"><%= alert %></p>
+            <% end %>
 
-        <p><%= current_user.email %></p>
-
-        <p class="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete %>
-          <%= link_to "Home", :root %>
-          <%= link_to 'Back', :back %></p>
-        <%= button_to "Wine List", wines_path, :class => 'button', :method => :get %>
-        <hr>
-        <p><strong>My Links</strong></p>
-
-    <% end %>
-
-    <%= yield :left_sidebar %>
+            <%= yield :header %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
-  <div id="content">
-    <%= yield %>
-  </div>
+  <div class="row">
+    <div class="span3">
+      <div id="menu">
+        <% if current_user != NIL %>
+            <strong>You are logged in as</strong>
 
+            <p><%= current_user.email %></p>
+
+            <%= link_to 'Back', :back %></p>
+            <hr>
+
+        <% end %>
+
+        <%= yield :left_sidebar %>
+      </div>
+    </div>
+
+    <div class="span9">
+      <%= yield %>
+    </div>
+
+  </div>
   <div id="footer">
     <%= yield :footer %>
     Copyright © Casswitz Enterprises

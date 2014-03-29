@@ -1,16 +1,10 @@
+<%- model_class = Bottle -%>
 <% content_for :header do %>
     <div>
       <h3 style="text-align: center"><%= @title %></h3>
 
       <p><%= @greeting %></p>
 
-      <p>... and here are some happy facts:</p>
-      <ul>
-        <li><%= "You have purchased #{pluralize(@n_bottles, "bottle")} of wine"%></li>
-        <li><%= "You paid $#{@total_paid_price}"%></li>
-        <li><%= "Total list was $#{@total_list_price}"%></li>
-        <li><%= "For a saving of $#{@total_saved}"%></li>
-      </ul>
     </div>
 <% end %>
 
@@ -18,56 +12,67 @@
 
 <% content_for :left_sidebar do %>
     <div>
-      <% if @is_owner == false %>
-          <%= link_to "MY CELLAR", user_path(current_user.id) %>
-      <% else %>
-          <table>
-            <% current_user.links.order(:name).each do |l| %>
-                <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-                  <td class="list_description">
-                    <%= raw "<a href=\"#{l.url}\" target=\"_blank\">#{l.name}</a>" %></td>
-                  <td><%= link_to 'x', link_path(l), :method => :delete %>
-                  </td>
-                </tr>
-            <% end %>
-          </table>
-          <br>
-          <hr>
-          <%= button_to 'ADD A BOTTLE', new_bottle_path, class: "button", method: :get %>
-          <%= button_to "UPDATE MY ACCOUNT", edit_user_registration_path, class: "button", method: :get %>
-          <%= button_to "INVITE A FRIEND", new_invitee_path, class: "button", method: :get %>
-    <% end %>
+      <p>... and here are some happy facts:</p>
+      <ul>
+        <li><%= "You have purchased #{pluralize(@n_bottles, "bottle")} of wine" %></li>
+        <li><%= "You paid $#{@total_paid_price}" %></li>
+        <li><%= "Total list was $#{@total_list_price}" %></li>
+        <li><%= "For a saving of $#{@total_saved}" %></li>
+      </ul>
+
+      <hr>
+      <%= button_to 'ADD A BOTTLE', new_bottle_path, class: "button", method: :get %>
+      <%= button_to "UPDATE MY ACCOUNT", edit_user_registration_path, class: "button", method: :get %>
 
     </div>
 <% end %>
 
 
 <%# iterate through @wine.bottles %>
-<table>
+<table class="table table-striped">
   <p id="notice"><%= notice %></p>
-
+  <thead>
+  <tr>
+    <th><%= model_class.human_attribute_name(:style) %></th>
+    <th><%= model_class.human_attribute_name(:date) %></th>
+    <th><%= model_class.human_attribute_name(:bottles) %></th>
+    <th><%= model_class.human_attribute_name(:wine) %></th>
+    <th><%= model_class.human_attribute_name(:comment) %></th>
+    <th><%= t '.actions', :default => t("helpers.actions") %></th>
+  </tr>
+  </thead>
+  <tbody>
   <% @bottles.each do |bottle| %>
 
-      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-        <td class="list_description" style="width:40%">
+      <tr>
+        <td><%= image_tag(bottle.wine.variety.icon, size: "25x25") %></td>
+        <td><%= bottle.purchased_on %></td>
+        <td>
           <% if @is_owner == true %>
-              <%= image_tag( bottle.wine.variety.icon, size: "25x25") %>
-              <%= link_to "#{bottle.purchased_on} - #{ pluralize(bottle.quantity, "bottle") }",
-                          edit_bottle_path(bottle.id) %>
+              <%= link_to "#{ pluralize(bottle.quantity, "bottle") }", edit_bottle_path(bottle.id) %>
           <% else %>
-              <%= link_to "#{bottle.purchased_on} - #{ pluralize(bottle.quantity, "bottle") }",
-                          bottle_path(bottle.id) %>
+              <%= link_to "#{ pluralize(bottle.quantity, "bottle") }", bottle_path(bottle.id) %>
           <% end %>
+        </td>
+        <td>
           <%= link_to "#{bottle.wine.wine_name}", bottles_path(:wine_id => bottle.wine.id) %>
         </td>
-        <td style="width:60%">
+        <td>
           <% if bottle.comment %>
               <i><%= truncate(bottle.comment, length: 80, separator: ' ') %></i>
           <% end %>
         </td>
+        <td>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      bottle_path(bottle),
+                      :method => :delete,
+                      :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
       </tr>
 
   <% end %>
+  </tbody>
 </table> <br/>
 
 

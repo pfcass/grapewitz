@@ -1,6 +1,8 @@
+<%- model_class = Wine -%>
 <% content_for :header do %>
     <div>
       <h2>Welcome to Grapewitz</h2>
+
       <h3 style="text-align: center">"These are the wines that fry men's (and women's) souls"<sup>*</sup></h3>
 
       <p>Welcome to Grapewitz, a place you can go after a couple of glasses of wine to
@@ -8,6 +10,7 @@
         on wine by buying at a discount (savings you'll need for that nice, new liver),
         and generally having a merry old time.
       </p>
+
       <p>
         The main panel shows the wines that have been bought by our friends.
       </p>
@@ -20,40 +23,43 @@
       <%= link_to "MY CELLAR", user_path(current_user.id) %>
 
       <h3>USERS:</h3>
+
       <p>Here are a list of your friends who have accounts on <i>Grapewitz</i></p>
+
       <p>Click a link to see what they've bought</p>
+
       <div>
         <% @users.each do |u| %>
-            <%= link_to u.email, user_path( u.id ) %>
+            <%= link_to u.email, user_path(u.id) %>
         <% end %>
-      </div><br>
+      </div>
+      <br>
     </div>
 <% end %>
 
-<table>
+<table class="table table-striped">
+  <thead>
   <tr>
-    <td colspan="2"></td>
-    <h3>These are the wines our friends have bought</h3>
-    <p>Click on the 'bottles' link to view the details of all purchase of that wine</p>
-    <p>Click on the wine name to view details about that variety and what all your
-    friends have to say about it</p>
+    <th><%= model_class.human_attribute_name(:style) %></th>
+    <th><%= model_class.human_attribute_name(:purchase) %></th>
+    <th><%= model_class.human_attribute_name(:wine_name) %></th>
+    <th><%= model_class.human_attribute_name(:comment) %></th>
   </tr>
-  <% @wines.each do |wine| %>
+  </thead>
 
-      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-        <td class="list_description" style="width:80%" float="right">
-          <%= image_tag( wine.variety.icon, size: "25x25") %>
-          <%= link_to "#{ pluralize(wine.num_bottles(true, current_user.id), "bottle") }",
-                      bottles_path(:wine_id => wine.id) %>
-          <%= link_to "#{wine.wine_name}", wine_path(wine.id) %>
-        </td>
-        <td style="width:20">
-          <% if wine.comments.first %>
-              <i><%= truncate(wine.comments.first.comment, length: 80, separator: ' ') %></i>
-          <% end %>
-        </td>
+  <tbody>
+  <% @wines.each do |wine| %>
+      <tr>
+        <td><%= image_tag(wine.variety.icon, size: "25x25") %></td>
+        <td><%= link_to "#{ pluralize(wine.num_bottles(true, current_user.id), "bottle") }",
+                        bottles_path(:wine_id => wine.id) %></td>
+        <td><%= link_to "#{wine.wine_name}", wine_path(wine.id) %></td>
+        <% if wine.comments.first %>
+            <td><i><%= truncate(wine.comments.first.comment, length: 80, separator: ' ') %></i></td>
+        <% end %>
       </tr>
   <% end %>
+  </tbody>
 </table>
 <%= button_to 'NEW WINE', new_wine_path, class: "button", method: :get %><br>
 
