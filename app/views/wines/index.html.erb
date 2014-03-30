@@ -3,37 +3,26 @@
     <div>
       <h2>Welcome to Grapewitz</h2>
 
-      <h3 style="text-align: center">"These are the wines that fry men's (and women's) souls"<sup>*</sup></h3>
+      <p><i>"These are the wines that fry men's (and women's) souls"<sup>*</sup></i></p>
+      <p>Here are the wines in our cellars...</p>
 
+
+    </div>
+<% end %>
+
+<% content_for :left_sidebar do %>
+    <div>
       <p>Welcome to Grapewitz, a place you can go after a couple of glasses of wine to
         discuss your purchase with friends, keep track of how much you haven't spent
         on wine by buying at a discount (savings you'll need for that nice, new liver),
         and generally having a merry old time.
       </p>
 
-      <p>
-        The main panel shows the wines that have been bought by our friends.
-      </p>
-    </div>
-<% end %>
 
-<% content_for :left_sidebar do %>
-    <div>
+      <p>Click in the 'purchace' column to view details of that day's shopping</p>
 
-      <%= link_to "MY CELLAR", user_path(current_user.id) %>
-
-      <h3>USERS:</h3>
-
-      <p>Here are a list of your friends who have accounts on <i>Grapewitz</i></p>
-
-      <p>Click a link to see what they've bought</p>
-
-      <div>
-        <% @users.each do |u| %>
-            <%= link_to u.email, user_path(u.id) %>
-        <% end %>
-      </div>
-      <br>
+      <p>Click on the 'Wine Name' column to see what your friends have said
+        about that particular wine</p>
     </div>
 <% end %>
 

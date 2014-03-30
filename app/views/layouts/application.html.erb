@@ -22,7 +22,7 @@
                 <% User.where('id != ?', current_user.id).each do |u| %>
                     <%= menu_item u.name, user_path(u) %>
                 <% end %>
-                <%= menu_item " - - - "%>
+                <%= menu_item " - - - " %>
                 <%= menu_item "Invite A Friend", new_invitee_path %>
 
             <% end %>
@@ -83,10 +83,10 @@
       <div class="row">
         <div class="span3">
           <div id="menu">
+            <p><%= link_to 'Back', :back %></p>
             <strong>You are logged in as</strong>
 
             <p><%= current_user.email %></p>
-            <%= link_to 'Back', :back %></p>
             <hr>
 
             <%= yield :left_sidebar %>
@@ -99,8 +99,10 @@
 
       </div>
       <div id="footer">
-        <%= yield :footer %>
-        Copyright © Casswitz Enterprises
+        <div class="row">
+          <div class="span9"><%= yield :footer%></div>
+          <div class="span3">Copyright © Casswitz Enterprises</div>
+        </div>
       </div>
     </div>
 <% else %>
