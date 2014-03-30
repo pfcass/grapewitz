@@ -1,36 +1,26 @@
-<%= form_for(@variety) do |f| %>
-    <% if @variety.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@variety.errors.count, "error") %> prohibited this variety from being saved:</h2>
-
-          <ul>
-            <% @variety.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :name %>
-      <br>
-      <%= f.text_field :name %>
+<%= form_for @variety, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
     </div>
-
-    <div class="field">
-      <%= f.label :color %>
-      <br>
-      <%= f.select(:color, [['Red', Variety::RED], ['White', Variety::WHITE], ['Rose', Variety::ROSE]]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :color, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :color, :class => 'text_field' %>
     </div>
-
-    <div class="field">
-      <%= f.label :fizz %>
-      <br>
-      <%= f.select(:fizz, [['Still', Variety::STILL], ['Sparkling', Variety::FIZZY]]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :fizz, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :fizz, :class => 'text_field' %>
     </div>
+  </div>
 
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                varieties_path, :class => 'btn' %>
+  </div>
 <% end %>
