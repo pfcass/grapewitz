@@ -20,10 +20,11 @@
         <li><%= "For a saving of $#{@total_saved}" %></li>
       </ul>
 
-      <hr>
-      <%= button_to 'ADD A BOTTLE', new_bottle_path, class: "button", method: :get %>
-      <%= button_to "UPDATE MY ACCOUNT", edit_user_registration_path, class: "button", method: :get %>
-
+      <% if @is_owner %>
+          <hr>
+          <%= button_to 'ADD A BOTTLE', new_bottle_path, class: "button", method: :get %>
+          <%= button_to "UPDATE MY ACCOUNT", edit_user_registration_path, class: "button", method: :get %>
+      <% end %>
     </div>
 <% end %>
 

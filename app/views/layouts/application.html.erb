@@ -13,50 +13,49 @@
 </head>
 
 <body class='<%= controller.controller_name %>'>
+<% if user_signed_in? %>
+    <%= nav_bar :fixed => :top, :brand => "GrapeWitz", :responsive => true do %>
+        <%= menu_group do %>
+            <%= menu_item "View Wines", root_path %>
+            <%= menu_item "My Cellar", user_path(current_user) %>
+            <%= drop_down "My Friends' Cellars" do %>
+                <% User.where('id != ?', current_user.id).each do |u| %>
+                    <%= menu_item u.name, user_path(u) %>
+                <% end %>
+            <% end %>
 
-<%= nav_bar :fixed => :top, :brand => "GrapeWitz", :responsive => true do %>
-    <%= menu_group do %>
-        <%= menu_item "View Wines", root_path %>
-        <%= menu_item "My Cellar", user_path(current_user) %>
-        <%= drop_down "My Friends' Cellars" do %>
-            <% User.where('id != ?', current_user.id).each do |u| %>
-                <%= menu_item u.name, user_path(u) %>
+            <%= drop_down "My Links" do %>
+                <% current_user.links.order(:name).each do |l| %>
+                    <%= menu_item(raw "<a href=\"#{l.url}\" target=\"_blank\">#{l.name}</a>") %>
+                <% end %>
+            <% end %>
+
+
+            <%= menu_divider %>
+            <%= drop_down "New..." do %>
+                <%= menu_item "Wine", new_wine_path %>
+                <%= menu_item "---" %>
+                <%= menu_item "Brand", new_brand_path %>
+                <%= menu_item "Variety", new_variety_path %>
+                <%= menu_item "Region", new_region_path %>
+                <%= menu_item "Store", new_store_path %>
             <% end %>
         <% end %>
-
-        <%= drop_down "My Links" do %>
-            <% current_user.links.order(:name).each do |l| %>
-                <%= menu_item( raw "<a href=\"#{l.url}\" target=\"_blank\">#{l.name}</a>" ) %>
-            <% end %>
-        <% end %>
-
-
-        <%= menu_divider %>
-        <%= drop_down "New..." do %>
-            <%= menu_item "Wine", new_wine_path %>
-            <%= menu_item "---" %>
-            <%= menu_item "Brand", new_brand_path %>
-            <%= menu_item "Variety", new_variety_path %>
-            <%= menu_item "Region", new_region_path %>
-            <%= menu_item "Store", new_store_path %>
+        <%= menu_group :pull => :right do %>
+            <%= menu_item "Invite A Friend", new_invitee_path %>
+            <%= menu_item "Log Out", destroy_user_session_path, :method => :delete %>
         <% end %>
     <% end %>
-    <%= menu_group :pull => :right do %>
-        <%= menu_item "Invite A Friend", new_invitee_path %>
-        <%= menu_item "Log Out", destroy_user_session_path %>
-    <% end %>
-<% end %>
 
-<div id="container">
-  <div class="row">
-    <div class="span3">
-      <td>
-        <%= image_tag "grapes.jpg", {:size => "150x150", :style => "padding: 10px;"} %>
-      </td>
-    </div>
-    <div class="span9">
-      <div id="header">
-        <% if current_user != nil %>
+    <div id="container">
+      <div class="row">
+        <div class="span3">
+          <td>
+            <%= image_tag "grapes.jpg", {:size => "150x150", :style => "padding: 10px;"} %>
+          </td>
+        </div>
+        <div class="span9">
+          <div id="header">
             <% if notice != nil %>
                 <p class="notice"><%= notice %></p>
             <% end %>
@@ -66,39 +65,36 @@
             <% end %>
 
             <%= yield :header %>
-        <% end %>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="span3">
-      <div id="menu">
-        <% if current_user != NIL %>
+      <div class="row">
+        <div class="span3">
+          <div id="menu">
             <strong>You are logged in as</strong>
 
             <p><%= current_user.email %></p>
-
             <%= link_to 'Back', :back %></p>
             <hr>
 
-        <% end %>
+            <%= yield :left_sidebar %>
+          </div>
+        </div>
 
-        <%= yield :left_sidebar %>
+        <div class="span9">
+          <%= yield %>
+        </div>
+
+      </div>
+      <div id="footer">
+        <%= yield :footer %>
+        Copyright © Casswitz Enterprises
       </div>
     </div>
-
-    <div class="span9">
-      <%= yield %>
-    </div>
-
-  </div>
-  <div id="footer">
-    <%= yield :footer %>
-    Copyright © Casswitz Enterprises
-  </div>
-
-</div>
+<% else %>
+    <%= yield %>
+<% end %>
 
 </body>
 </html>
