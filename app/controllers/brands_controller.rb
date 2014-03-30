@@ -54,6 +54,13 @@ class BrandsController < ApplicationController
   # DELETE /brands/1
   # DELETE /brands/1.json
   def destroy
+    if Bottle.where( "brand_id = ?", @brand.id ) == []
+      respond_to do |format|
+        format.html { redirect_to wines_url,
+                                  :notice => 'Can\'t delete since there are wines of this brand' }
+        format.json { head :no_content }
+      end
+    end
     @brand.destroy
     respond_to do |format|
       format.html { redirect_to brands_url }
