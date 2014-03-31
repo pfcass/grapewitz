@@ -17,6 +17,11 @@
       <%= collection_select(:bottle, :wine_id, Wine.all, :id, :wine_name, :prompt => true) %>
     </div>
     <div class="field">
+      <%= f.label :comment %>
+      <br>
+      <%= f.text_area :comment %>
+    </div>
+    <div class="field">
       <%= f.label :quantity %><br>
       <%= f.number_field :quantity %>
       <%= f.label :purchased_on %>
@@ -27,19 +32,10 @@
       <%= collection_select(:bottle, :store_id, Store.all, :id, :name, :prompt => true) %>
     </div>
     <div class="field">
-      <%= f.label "Paid" %><br>
+      <%= f.label "Paid" %>
       <%= f.text_field :price %>
       <%= f.label "(List)" %>
       <%= f.text_field :list_price %>
-    </div>
-    <div class="field">
-      <%= f.label :visibility %><br>
-      <%= f.select(:visibility, [['Visible', Bottle::VISIBLE_TO_ALL], ['Hidden', Bottle::HIDDEN]]) %>
-    </div>
-    <div class="field">
-      <%= f.label :comment %>
-      <br>
-      <%= f.text_area :comment %>
     </div>
     <div class="actions">
       <%= f.submit %>

@@ -1,16 +1,14 @@
 <% content_for :header do %>
     <div>
-      <h2>View or Modify A Purchase</h2>
-      <h3 style="text-align: center"><%= "Details of #{@bottle.wine.wine_name} purchase on #{@bottle.purchased_on}" %></h3>
+      <h3>View or Modify A Purchase</h3>
+      <p><%= "Details of #{@bottle.wine.wine_name} purchase on #{@bottle.purchased_on}" %></p>
 
-      <p>You can use this screen to view the details of your purchase.</p>
     </div>
 <% end %>
 
 <% content_for :left_sidebar do %>
     <div>
-      <%= link_to "MY CELLAR", user_path(current_user.id) %>
-
+      <p>You can use this screen to view the details of your purchase.</p>
       <% if @users.count > 0 %>
           <hr>
           <p>USERS WHO ALSO OWN</p> <strong><%= @bottle.wine.wine_name %></strong><br>

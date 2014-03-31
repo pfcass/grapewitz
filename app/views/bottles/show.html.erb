@@ -1,17 +1,13 @@
 <% content_for :header do %>
     <div>
-      <h3 style="text-align: center">"These are the wines that fry men's (and women's) souls"<sup>*</sup></h3>
-
-      <p>Welcome to Grapewitz, a place you can go after a couple of glasses of wine to
-        discuss your purchase with friends, keep track of how much you haven't spent
-        on wine by buying at a discount (savings you'll need for that nice, new liver),
-        and generally having a merry old time. </p>
+      <p>Details of this purchase</p>
+      <h3><%= @bottle.wine.name %></p></h3>
     </div>
 <% end %>
 
 <% content_for :left_sidebar do %>
     <div>
-      <%= link_to "MY CELLAR", user_path(current_user.id) %>
+
     </div>
 <% end %>
 
