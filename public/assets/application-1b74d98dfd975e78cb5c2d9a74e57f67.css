@@ -19,6 +19,10 @@ body {
 }
 #header h3 {
   font-style: italic;
+  text-align: center;
+}
+#header p {
+  text-align: center;
 }
 #menu {
   padding: 20px;
@@ -7361,8 +7365,11 @@ a .icon-flip-vertical:before {
   content: "\f18b";
 }
 #container {
-  background-color: rgba(159, 39, 101, 0.35);
+  background-color: rgba(252, 178, 243, 0.35);
 }
 .span9 tbody {
   background-color: lightgrey;
+}
+textarea {
+  width: 400px;
 }
