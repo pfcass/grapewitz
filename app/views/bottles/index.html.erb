@@ -1,6 +1,9 @@
+<%- model_class = Bottle -%>
+
+
 <% content_for :header do %>
     <div>
-      <h3 style="text-align: center"><%=@title %></h3>
+      <h3 style="text-align: center"><%= @title %></h3>
     </div>
 <% end %>
 
@@ -21,28 +24,28 @@
 <% end %>
 
 
-<table>
+<table class="table table-striped">
   <thead>
   <tr>
-    <th>Date</th>
-    <th>Quantity</th>
-    <th>Price/List</th>
-    <th>Comment</th>
-    <th>Store</th>
-    <th>Purchaser</th>
+    <th><%= model_class.human_attribute_name("date") %></th>
+    <th><%= model_class.human_attribute_name(:quantity) %></th>
+    <th><%= model_class.human_attribute_name("price/list") %></th>
+    <th><%= model_class.human_attribute_name(:comment) %></th>
+    <th><%= model_class.human_attribute_name(:store) %></th>
+    <th><%= model_class.human_attribute_name(:purchaser) %></th>
   </tr>
   </thead>
 
   <tbody>
   <% @bottles.each do |bottle| %>
-          <tr>
-            <td><%= bottle.purchased_on %></td>
-            <td><%= bottle.quantity %></td>
-            <td><%= bottle.price %> / <%= bottle.list_price %></td>
-            <td><%= bottle.comment %></td>
-            <td><%= bottle.store.name %></td>
-            <td><%= link_to bottle.user.name, user_path( bottle.user.id )%></td>
-          </tr>
+      <tr>
+        <td><%= bottle.purchased_on %></td>
+        <td><%= bottle.quantity %></td>
+        <td><%= bottle.price %> / <%= bottle.list_price %></td>
+        <td><%= bottle.comment %></td>
+        <td><%= bottle.store.name %></td>
+        <td><%= link_to bottle.user.name, user_path(bottle.user.id) %></td>
+      </tr>
   <% end %>
   </tbody>
 </table>
