@@ -54,28 +54,31 @@ class BrandsController < ApplicationController
   # DELETE /brands/1
   # DELETE /brands/1.json
   def destroy
-    if Bottle.where( "brand_id = ?", @brand.id ) == []
+    b = Bottle.joins(:wine).where("wines.brand_id = ?", @brand.id) == []
+    if b == false
       respond_to do |format|
-        format.html { redirect_to wines_url,
+        format.html { redirect_to brands_url,
                                   :notice => 'Can\'t delete since there are wines of this brand' }
         format.json { head :no_content }
       end
-    end
-    @brand.destroy
-    respond_to do |format|
-      format.html { redirect_to brands_url }
-      format.json { head :no_content }
+    else
+      @brand.destroy
+      respond_to do |format|
+        format.html { redirect_to brands_url }
+        format.json { head :no_content }
+      end
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_brand
-      @brand = Brand.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_brand
+    @brand = Brand.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def brand_params
-      params.require(:brand).permit(:name)
-    end
+# Never trust parameters from the scary internet, only allow the white list through.
+  def brand_params
+    params.require(:brand).permit(:name)
+  end
+
 end

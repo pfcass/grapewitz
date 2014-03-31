@@ -1,5 +1,16 @@
 <%- model_class = Brand -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
-</div>
+<% content_for :header do %>
+    <div class="page-header">
+      <h2><%= t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h2>
+    </div>
+<% end %>
+
+
 <%= render :partial => 'form' %>
+
+<% content_for :left_sidebar do %>
+    <p>
+      You may change the name of a brand, but be warned that this will
+      change it for all wines of this brand.
+    </p>
+<%	 end %>
