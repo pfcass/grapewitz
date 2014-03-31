@@ -12,18 +12,20 @@
 
 <% content_for :left_sidebar do %>
     <div>
-      <p>... and here are some happy facts:</p>
-      <ul>
-        <li><%= "You have purchased #{pluralize(@n_bottles, "bottle")} of wine" %></li>
-        <li><%= "You paid $#{@total_paid_price}" %></li>
-        <li><%= "Total list was $#{@total_list_price}" %></li>
-        <li><%= "For a saving of $#{@total_saved}" %></li>
-      </ul>
-
       <% if @is_owner %>
+          <p>... and here are some happy facts:</p>
+          <ul>
+            <li><%= "You have purchased #{pluralize(@n_bottles, "bottle")} of wine" %></li>
+            <li><%= "You paid $#{@total_paid_price}" %></li>
+            <li><%= "Total list was $#{@total_list_price}" %></li>
+            <li><%= "For a saving of $#{@total_saved}" %></li>
+          </ul>
+
           <hr>
           <%= button_to 'ADD A BOTTLE', new_bottle_path, class: "button", method: :get %>
           <%= button_to "UPDATE MY ACCOUNT", edit_user_registration_path, class: "button", method: :get %>
+      <%	 else %>
+          <li><%= "#{pluralize(@n_bottles, "bottle")} of wine" %></li>
       <% end %>
     </div>
 <% end %>

@@ -1,6 +1,7 @@
 <% content_for :header do %>
     <div>
       <p>Details of this purchase</p>
+
       <h3><%= @bottle.wine.name %></p></h3>
     </div>
 <% end %>
@@ -22,18 +23,15 @@
   <%= @bottle.purchased_on %>
 </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @bottle.price %>
-  <% if @bottle.list_price != nil && @bottle.list_price > 0.0 %>
-      <%= "(lists for #{@bottle.list_price})" %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @bottle.rating %>
-</p>
+<% if @is_owner %>
+    <p>
+      <strong>Price:</strong>
+      <%= @bottle.price %>
+      <% if @bottle.list_price != nil && @bottle.list_price > 0.0 %>
+          <%= "(lists for #{@bottle.list_price})" %>
+      <% end %>
+    </p>
+<% end %>
 
 <p>
   <strong>Comment:</strong>

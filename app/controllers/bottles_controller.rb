@@ -84,6 +84,7 @@ class BottlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_bottle
       @bottle = Bottle.find(params[:id])
+      @is_owner = @bottle.user_id == params[:id].to_i
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
