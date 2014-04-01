@@ -1,5 +1,24 @@
 <%- model_class = Invitee -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
-</div>
+
+<% content_for :header do %>
+    <div class="page-header">
+      <h3><%= t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h3>
+      <p>
+        Add a friend to GrapeWitz.
+      </p>
+    </div>
+<% end %>
+
+
+<% content_for :left_sidebar do %>
+    <p>
+      Use this screen to add a friend's email address to the list of those
+      who may log on to GrapeWitz.
+    </p>
+    <p>
+      Once you've finished here, send your friend the link to the site and have them sign up.
+    </p>
+<% end %>
+
+
 <%= render :partial => 'form' %>

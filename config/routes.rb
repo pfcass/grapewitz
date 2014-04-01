@@ -1,9 +1,9 @@
 Grapewitz::Application.routes.draw do
 
-  resources :invitees
-
   #keep this first to avoid redirect loop!
   devise_for :users
+
+  resources :invitees
 
   resources :regions
 

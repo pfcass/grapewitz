@@ -54,7 +54,7 @@ class VarietiesController < ApplicationController
   # DELETE /varieties/1
   # DELETE /varieties/1.json
   def destroy
-    @variety.destroy
+    #@variety.destroy
     respond_to do |format|
       format.html { redirect_to varieties_url }
       format.json { head :no_content }
