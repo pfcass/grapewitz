@@ -21,7 +21,7 @@ Grapewitz::Application.routes.draw do
 
   resources :comments, only: [ :create, :edit, :update ]
 
-  resources :links, only: [:new, :create, :destroy]
+  resources :links
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
