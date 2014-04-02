@@ -8,13 +8,12 @@
   <div class="control-group">
     <%= f.label :color, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :color, :class => 'text_field' %>
-    </div>
+      <%= f.select(:color, [['Red', Variety::RED], ['White', Variety::WHITE], ['Rose', Variety::ROSE]]) %>    </div>
   </div>
   <div class="control-group">
     <%= f.label :fizz, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :fizz, :class => 'text_field' %>
+      <%= f.select(:fizz, [['Still', Variety::STILL], ['Sparkling', Variety::FIZZY]]) %>
     </div>
   </div>
 
