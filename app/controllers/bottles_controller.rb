@@ -5,6 +5,7 @@ class BottlesController < ApplicationController
   # GET /bottles.json
   def index
     if params[:wine_id] != nil
+      @do_search = false
       wine_id = params[:wine_id].to_i
       @bottles = Bottle.visible_bottles( current_user.id, wine_id )
       if @bottles != nil
@@ -14,7 +15,8 @@ class BottlesController < ApplicationController
       end
       @title = "Purchases of Bottles of #{Wine.find(wine_id).name}"
     else
-      @title = "Purchase of All Bottles"
+      @do_search = true
+      @title = "Search all our bottles"
       @bottles = Bottle.visible_bottles( current_user.id )
       @users = []
     end

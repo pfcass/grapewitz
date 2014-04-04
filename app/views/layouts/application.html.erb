@@ -16,7 +16,8 @@
 <% if user_signed_in? %>
     <%= nav_bar :fixed => :top, :brand => "GrapeWitz", :responsive => true do %>
         <%= menu_group do %>
-            <%= menu_item "View Wines", root_path %>
+            <%= menu_item "Wines", wines_path %>
+            <%= menu_item "Bottles", bottles_path %>
             <%= menu_item "My Cellar", user_path(current_user) %>
             <%= drop_down "My Friends' Cellars" do %>
                 <% User.where('id != ?', current_user.id).each do |u| %>

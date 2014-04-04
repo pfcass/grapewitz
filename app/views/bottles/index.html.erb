@@ -8,19 +8,36 @@
 <% end %>
 
 <% content_for :left_sidebar do %>
-    <div>
+    <% if @do_search %>
+        <%= form_tag '', :method => :get do %>
+            <%= select_tag :color, options_for_select(
+                    [['Red', Variety::RED], ['White', Variety::WHITE], ['Rose', Variety::ROSE]]),
+                           :prompt => 'color' %>
+            <%= select_tag :fizz, options_for_select(
+                    [['fizz', 0], ['Still', Variety::STILL], ['Sparkling', Variety::FIZZY]]),
+                           :prompt => 'fizz' %>
+            <%= select_tag :brand, options_from_collection_for_select(Brand.all, :id, :name),
+                           :prompt => "brand" %>
+            <%= select_tag :variety, options_from_collection_for_select(Variety.all, :id, :name), :prompt => 'variety' %>
+            <%= select_tag :store, options_from_collection_for_select(Store.all, :id, :name), :prompt => 'store' %>
 
-      <% if !@users.empty? %>
-          <p>USERS WHO ALSO OWN THIS WINE</p>
+            <%= submit_tag 'Filter' %>
+        <% end %>
 
-          <div>
-            <% @users.each do |u| %>
-                <%= link_to u.email, user_path(u.id) %>
-            <% end %>
-          </div>
-      <% end %>
+    <% else %>
 
-    </div>
+        <div>
+          <% if !@users.empty? %>
+              <p>USERS WHO ALSO OWN THIS WINE</p>
+
+              <div>
+                <% @users.each do |u| %>
+                    <%= link_to u.email, user_path(u.id) %>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+    <% end %>
 <% end %>
 
 

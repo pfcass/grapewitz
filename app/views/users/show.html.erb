@@ -30,15 +30,6 @@
     </div>
 <% end %>
 
-<%= form_tag '', :method => :get do %>
-    <%= select_tag :color, options_for_select(
-            [['Red', Variety::RED], ['White', Variety::WHITE], ['Rose', Variety::ROSE]]) %>
-    <%= select_tag :fizz, options_for_select(
-            [['Still', Variety::STILL], ['Sparkling', Variety::FIZZY]]) %>
-
-    <%= submit_tag 'Filter' %>
-<% end %>
-
 
 
 <%# iterate through @wine.bottles %>
