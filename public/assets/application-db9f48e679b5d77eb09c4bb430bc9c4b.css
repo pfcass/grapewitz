@@ -7373,3 +7373,6 @@ a .icon-flip-vertical:before {
 textarea {
   width: 400px;
 }
+.dropdown-backdrop {
+  position: static;
+}
