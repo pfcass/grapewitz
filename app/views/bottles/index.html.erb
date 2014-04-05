@@ -10,16 +10,17 @@
 <% content_for :left_sidebar do %>
     <% if @do_search %>
         <%= form_tag '', :method => :get do %>
-            <%#= select_tag :color, options_for_select(
+            <%= select_tag :color, options_for_select(
                     [['Red', Variety::RED], ['White', Variety::WHITE], ['Rose', Variety::ROSE]]),
                            :prompt => 'color' %>
-            <%#= select_tag :fizz, options_for_select(
-                    [['fizz', 0], ['Still', Variety::STILL], ['Sparkling', Variety::FIZZY]]),
-                           :prompt => 'fizz' %>
-            <%= select_tag :brand, options_from_collection_for_select(Brand.all, :id, :name),
+            <%= select_tag :brand, options_from_collection_for_select(Brand.all.order(:name), :id, :name),
                            :prompt => "brand" %>
-            <%= select_tag :variety, options_from_collection_for_select(Variety.all, :id, :name), :prompt => 'variety' %>
-            <%= select_tag :store, options_from_collection_for_select(Store.all, :id, :name), :prompt => 'store' %>
+            <%= select_tag :variety, options_from_collection_for_select(Variety.all.order(:name), :id, :name), :prompt => 'variety' %>
+            <%= select_tag :region, options_from_collection_for_select(Region.all.order(:name), :id, :name), :prompt => 'region' %>
+            <%= select_tag :store, options_from_collection_for_select(Store.all.order(:name), :id, :name), :prompt => 'store' %>
+            <%= select_tag :fizz, options_for_select(
+                    [['Still', Variety::STILL], ['Sparkling', Variety::FIZZY]]),
+                           :prompt => 'fizz' %>
 
             <%= submit_tag 'Filter' %>
         <% end %>
@@ -44,8 +45,10 @@
 <table class="table table-striped">
   <thead>
   <tr>
+    <th><%= model_class.human_attribute_name("style") %></th>
     <th><%= model_class.human_attribute_name("date") %></th>
     <th><%= model_class.human_attribute_name("wine") %></th>
+    <th><%= model_class.human_attribute_name(:region) %></th>
     <th><%= model_class.human_attribute_name(:quantity) %></th>
     <th><%= model_class.human_attribute_name("price/list") %></th>
     <th><%= model_class.human_attribute_name(:comment) %></th>
@@ -60,8 +63,10 @@
   <% else %>
       <% @bottles.each do |bottle| %>
           <tr>
+            <td><%= image_tag(bottle.wine.variety.icon, size: "25x25") %></td>
             <td><%= bottle.purchased_on %></td>
             <td><%= bottle.wine.name %></td>
+            <td><%= bottle.wine.region.name %></td>
             <td><%= bottle.quantity %></td>
             <td><%= bottle.price %> / <%= bottle.list_price %></td>
             <td><%= bottle.comment %></td>

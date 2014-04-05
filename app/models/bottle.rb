@@ -18,10 +18,13 @@ class Bottle < ActiveRecord::Base
   VISIBLE_TO_FRIENDS = 0x1
   VISIBLE_TO_ALL = 0x2
 
-  #scope :color, -> (color) { joins(:wine, :variety).where("varieties.color = ?", color) }
+  scope :region, -> (region) { joins(:wine).where("wines.region_id = ?", region) }
   scope :variety, -> (variety) { joins(:wine).where("wines.variety_id = ?", variety) }
   scope :brand, -> (brand) { joins(:wine).where("wines.brand_id = ?", brand) }
   scope :store, -> (store) { where store_id: store }
+
+  scope :color, -> (color) { joins(wine: :variety).where("varieties.color = ?", color) }
+  scope :fizz, -> (fizz) { joins(wine: :variety).where("varieties.fizz = ?", fizz) }
 
   def inspect
     "#{self.wine.brand.name}.#{self.wine.variety.name}:  #{self.user.email}:  #{self.quantity}"

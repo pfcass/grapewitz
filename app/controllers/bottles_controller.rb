@@ -16,12 +16,11 @@ class BottlesController < ApplicationController
       @title = "Purchases of Bottles of #{Wine.find(wine_id).name}"
     else
       @do_search = true
-
-      @bottles = Bottle.filter(params.slice(:store, :brand, :variety))
-
       @title = "Search all our bottles"
-      #@bottles = Bottle.visible_bottles( current_user.id )
       @users = []
+
+      @bottles = Bottle.filter(params.slice(:store, :brand, :variety, :region, :color, :fizz))
+
     end
   end
 
