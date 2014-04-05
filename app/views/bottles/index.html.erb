@@ -29,7 +29,7 @@
 
         <div>
           <% if !@users.empty? %>
-              <p>USERS WHO ALSO OWN THIS WINE</p>
+              <p>Friends who have this wine:/p>
 
               <div>
                 <% @users.each do |u| %>
@@ -65,7 +65,7 @@
           <tr>
             <td><%= image_tag(bottle.wine.variety.icon, size: "25x25") %></td>
             <td><%= bottle.purchased_on %></td>
-            <td><%= bottle.wine.name %></td>
+            <td><%= link_to bottle.wine.name, wine_path( bottle.wine ) %></td>
             <td><%= bottle.wine.region.name %></td>
             <td><%= bottle.quantity %></td>
             <td><%= bottle.price %> / <%= bottle.list_price %></td>

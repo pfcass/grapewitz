@@ -1,18 +1,32 @@
+<%- model_class = Wine -%>
+
+
 <% content_for :header do %>
     <div>
       <h2><%= @wine.name %> from <%= @wine.region.name %></h2>
 
       <p>This wine was first added by:
         <i><%= @comments.first.user.name %></i> who says: <br>
-        <p><%= @comments.first.comment %></p>
+
+      <p><%= @comments.first.comment %></p>
       </p>
     </div>
 <% end %>
 
 <% content_for :left_sidebar do %>
     <p>
-      User this page to add your own notes on this wine.  Feel free to keep the conversation going...
+      Use this page to add your own notes on this wine. Feel free to keep the conversation going...
     </p>
+    <% if !@users.empty? %>
+        <hr>
+        <div>
+          <p>Friends who have this wine:</p>
+
+          <% @users.each do |u| %>
+              <%= link_to u.email, user_path(u.id) %>
+          <% end %>
+        </div>
+    <% end %>
 <% end %>
 
 
@@ -58,19 +72,27 @@
 
 
 <%# iterate through @wine.bottles %>
-<table>
-  <p>
-    <strong>... and here are the bottles your friends have purchased</strong>
-    <p>click the link to see their cellar </p>
-  </p>
+<p>
+  <strong>... and here are the bottles your friends have purchased</strong>
+
+<p>click the link to see their cellar </p>
+</p>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= model_class.human_attribute_name("style") %></th>
+    <th><%= model_class.human_attribute_name("cellar") %></th>
+    <th><%= model_class.human_attribute_name("bottle") %></th>
+    <th><%= model_class.human_attribute_name("comment") %></th>
+  </tr>
+  </thead>
 
   <% @bottles.each do |bottle| %>
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-        <%= image_tag( bottle.wine.variety.icon, size: "25x25") %>
-        <td class="list_description">
-          <%= link_to bottle.user.name, user_path(bottle.user.id) %>
-          <dd><%= bottle.to_label %></dd>
-          <dd><i><%= "\"#{strip_tags(bottle.comment)}\"" %></i></dd>
+        <td><%= image_tag(bottle.wine.variety.icon, size: "25x25") %></td>
+        <td> <%= link_to bottle.user.name, user_path(bottle.user.id) %></td>
+        <td><%= bottle.to_summary %></td>
+        <td><i><%= "\"#{strip_tags(bottle.comment)}\"" %></i></td>
         </td>
       </tr>
   <% end %>

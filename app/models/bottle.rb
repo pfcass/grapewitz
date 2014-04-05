@@ -38,8 +38,12 @@ class Bottle < ActiveRecord::Base
   end
 
   def to_label
-    str = "Got #{pluralize(self.quantity, 'bottle')} from #{self.store.name} "
+    str = to_summary
     str += cost
+  end
+
+  def to_summary
+    str = "Got #{pluralize(self.quantity, 'bottle')} from #{self.store.name} "
   end
 
   def cost
