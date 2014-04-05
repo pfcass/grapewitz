@@ -16,9 +16,9 @@
           <p>... and here are some happy facts:</p>
           <ul>
             <li><%= "You have purchased #{pluralize(@n_bottles, "bottle")} of wine" %></li>
-            <li><%= "You paid $#{@total_paid_price}" %></li>
-            <li><%= "Total list was $#{@total_list_price}" %></li>
-            <li><%= "For a saving of $#{@total_saved}" %></li>
+            <li><%= "You paid #{number_to_currency @total_paid_price}" %></li>
+            <li><%= "Total list was #{number_to_currency @total_list_price}" %></li>
+            <li><%= "For a saving of #{number_to_currency @total_saved}" %></li>
           </ul>
 
           <hr>
