@@ -6,12 +6,10 @@
       <h3 style="text-align: center"><%= @title %></h3>
       <p>This pages shows all the wine purchase of all GrapeWitz users.</p>
       <p>
-        Select the filter values you want to look for.  You may choose multiple
-        values to refine your search.
+        Select filter values you want to refine your search.
       </p>
       <p>
-        User the 'Filter' button to search.  Pressing 'Filter' with
-        filter selection will reset the list
+        User the 'Filter' button to search or reset the list
       </p>
     </div>
 <% end %>
@@ -72,13 +70,13 @@
   <% else %>
       <% @bottles.each do |bottle| %>
           <tr>
-            <td><%= image_tag(bottle.wine.variety.icon, size: "25x25") %></td>
-            <td><%= bottle.purchased_on %></td>
+            <td><%= image_tag(bottle.wine.variety.icon, size: "25x25")%></td>
+            <td><%= link_to bottle.purchased_on, bottle_path(bottle) %></td>
             <td><%= link_to bottle.wine.name, wine_path( bottle.wine ) %></td>
             <td><%= bottle.wine.region.name %></td>
             <td><%= bottle.quantity %></td>
             <td><%= bottle.price %> / <%= bottle.list_price %></td>
-            <td><%= bottle.comment %></td>
+            <td><%= truncate(bottle.comment, length: 80, separator: ' ')%></td>
             <td><%= bottle.store.name %></td>
             <td><%= link_to bottle.user.name, user_path(bottle.user.id) %></td>
           </tr>
