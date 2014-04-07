@@ -18,14 +18,22 @@
         <%= menu_group do %>
             <%= menu_item "Wines", wines_path %>
             <%= menu_item "Bottles", bottles_path %>
+            <%= drop_down "Resources..." do %>
+                <%= menu_item "Brands", brands_path %>
+                <%= menu_item "Varieties", varieties_path %>
+                <%= menu_item "Regions", regions_path %>
+                <%= menu_item "Stores", stores_path %>
+            <% end %>
+
+            <%= menu_divider %>
             <%= menu_item "My Cellar", user_path(current_user) %>
+
             <%= drop_down "My Friends' Cellars" do %>
                 <% User.where('id != ?', current_user.id).each do |u| %>
                     <%= menu_item u.name, user_path(u) %>
                 <% end %>
                 <%= menu_item " - - - " %>
                 <%= menu_item "Invite A Friend", new_invitee_path %>
-
             <% end %>
 
             <%= drop_down "My Links" do %>
@@ -34,16 +42,7 @@
                 <% end %>
             <% end %>
 
-
             <%= menu_divider %>
-            <%= drop_down "New..." do %>
-                <%= menu_item "Wine", new_wine_path %>
-                <%= menu_item "---" %>
-                <%= menu_item "Brand", new_brand_path %>
-                <%= menu_item "Variety", new_variety_path %>
-                <%= menu_item "Region", new_region_path %>
-                <%= menu_item "Store", new_store_path %>
-            <% end %>
         <% end %>
         <%= menu_group :pull => :right do %>
             <%= menu_item "CHART", image_path("wine_chart.png"), :target => "_blank" %>

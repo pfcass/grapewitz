@@ -24,7 +24,7 @@
 
         <div class="field">
           <%= f.label :region_id %>
-          <%= collection_select(:wine, :region_id, Region.all.sort_by{|r| r.name },
+          <%= collection_select(:wine, :region_id, Region.all.sort_by { |r| r.name },
                                 :id, :name, :prompt => true) %>
         </div>
 

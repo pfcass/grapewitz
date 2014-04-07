@@ -25,6 +25,17 @@ class WinesController < ApplicationController
   # GET /wines/new
   def new
     @wine = Wine.new
+    if params[:brand_id] != nil
+      @wine.brand_id = params[:brand_id].to_i
+    end
+
+    if params[:variety_id] != nil
+      @wine.variety_id = params[:variety_id].to_i
+    end
+
+    if params[:region_id] != nil
+      @wine.region_id = params[:region_id].to_i
+    end
   end
 
   # GET /wines/1/edit

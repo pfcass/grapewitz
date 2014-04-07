@@ -4,7 +4,7 @@ class RegionsController < ApplicationController
   # GET /regions
   # GET /regions.json
   def index
-    @regions = Region.all.sort_by { |region| region.name }
+    @regions = Region.all.order(:name)
   end
 
   # GET /regions/1
@@ -28,7 +28,7 @@ class RegionsController < ApplicationController
 
     respond_to do |format|
       if @region.save
-        format.html { redirect_to new_wine_path, notice: 'Region was successfully created.' }
+        format.html { redirect_to regions_path, notice: 'Region was successfully created.' }
         format.json { render action: 'show', status: :created, location: @region }
       else
         format.html { render action: 'new' }

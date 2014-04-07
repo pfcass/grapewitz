@@ -5,21 +5,18 @@
       <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
     </div>
 <% end %>
+
 <table class="table table-striped">
   <thead>
   <tr>
-    <th><%= model_class.human_attribute_name(:id) %></th>
-    <th><%= model_class.human_attribute_name(:name) %></th>
-    <th><%= model_class.human_attribute_name(:created_at) %></th>
+    <th><%= model_class.human_attribute_name(:click_to_create_a_new_wine_with_this_brand) %></th>
     <th><%= t '.actions', :default => t("helpers.actions") %></th>
   </tr>
   </thead>
   <tbody>
   <% @brands.each do |brand| %>
       <tr>
-        <td><%= link_to brand.id, brand_path(brand) %></td>
-        <td><%= brand.name %></td>
-        <td><%= l brand.created_at %></td>
+        <td><%= link_to brand.name, new_wine_path( :brand_id => brand.id ) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_brand_path(brand), :class => 'btn btn-mini' %>
